@@ -1,3 +1,17 @@
+const facebookThemeLink = document.createElement("link");
+facebookThemeLink.rel = "stylesheet";
+facebookThemeLink.href = "facebook-theme.css";
+document.head.appendChild(facebookThemeLink);
+
+const themeList = document.querySelector(".theme-list");
+
+if (themeList && !themeList.querySelector('[data-theme-option="facebook"]')) {
+  themeList.insertAdjacentHTML(
+    "beforeend",
+    '<button class="theme-option" type="button" data-theme-option="facebook"><span class="theme-preview theme-preview-facebook"></span><span class="theme-copy"><strong>Facebook</strong><small>Xanh Facebook · Trắng · Xám sáng</small></span><span class="theme-check">✓</span></button>'
+  );
+}
+
 const settingsButton = document.getElementById("settingsButton");
 const settingsOverlay = document.getElementById("settingsOverlay");
 const settingsClose = document.getElementById("settingsClose");
@@ -53,7 +67,8 @@ const allowedThemes = [
   "steam",
   "discord",
   "valorant",
-  "lol"
+  "lol",
+  "facebook"
 ];
 
 applyTheme(allowedThemes.includes(savedTheme) ? savedTheme : "phenikaa");
