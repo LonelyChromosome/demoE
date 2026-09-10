@@ -44,6 +44,6 @@ themeOptions.forEach(option => {
 });
 
 const savedTheme = localStorage.getItem("cipher-theme");
-const allowedThemes = ["phenikaa", "youtube", "shopee", "tiktok", "ben10"];
+const allowedThemes = ["phenikaa", "youtube", "shopee", "tiktok", "ben10", "steam"];
 
 applyTheme(allowedThemes.includes(savedTheme) ? savedTheme : "phenikaa");
