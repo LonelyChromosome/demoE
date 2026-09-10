@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mã hóa cổ điển</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark">C</div>
+        <div class="brand-text">
+          <strong>CIPHER</strong>
+          <span>CLASSICAL LAB</span>
+        </div>
+      </div>
+      <nav class="side-nav">
+        <button class="nav-item active" type="button"><span class="nav-icon">⌂</span><span>Trang chủ</span></button>
+        <button class="nav-item" type="button"><span class="nav-icon">▣</span><span>Mã hóa</span></button>
+        <button class="nav-item" type="button"><span class="nav-icon">A</span><span>Bảng chữ cái</span></button>
+        <button class="nav-item" type="button"><span class="nav-icon">?</span><span>Hướng dẫn</span></button>
+      </nav>
+      <div class="side-footer"><span class="status-dot"></span><span>Sẵn sàng</span></div>
+    </aside>
+    <div class="page-area">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" type="button">☰</button>
+        <div class="topbar-title">Mã hóa cổ điển</div>
+        <div class="topbar-search"><span>⌕</span><input type="text" placeholder="Tìm kiếm chức năng..." aria-label="Tìm kiếm chức năng"></div>
+        <div class="topbar-badge">Z26 / Z29</div>
+      </header>
+      <main class="content">
+        <section class="breadcrumb"><span>Trang chủ</span><b>›</b><strong>Công cụ mã hóa</strong></section>
+        <section class="page-heading">
+          <div><p class="eyebrow">CRYPTOGRAPHY TOOL</p><h1>Mã hóa và giải mã</h1></div>
+          <div class="heading-chip">5 thuật toán</div>
+        </section>
+        <section class="control-card">
+          <div class="control-grid">
+            <label class="field"><span>Loại mã hóa</span><select id="cipherSelect"><option value="caesar">Dịch vòng</option><option value="substitution">Mã thay thế</option><option value="vigenere">Mã Vigenere</option><option value="affine">Mã Affine</option><option value="hill">Mã Hill</option></select></label>
+            <label class="field"><span>Hệ chữ cái</span><select id="alphabetSelect"><option value="z26">Z26 · Tiếng Anh</option><option value="z29">Z29 · Tiếng Việt</option></select></label>
+            <div class="field key-area"><span>Khóa / Tham số</span><div id="keyControls"></div></div>
+          </div>
+          <div class="alphabet-strip"><span class="alphabet-label">Bảng chữ cái</span><div id="alphabetPreview" class="alphabet-preview"></div></div>
+        </section>
+        <section class="workspace-card">
+          <div class="text-panel">
+            <div class="panel-heading"><div><span class="panel-icon">T</span><strong>Bản rõ</strong></div><span id="plainCount">0 ký tự</span></div>
+            <textarea id="plainText" placeholder="Nhập bản rõ tại đây..."></textarea>
+          </div>
+          <div class="actions">
+            <button id="encryptButton" class="action-button primary" type="button"><span>→</span>Mã hóa</button>
+            <button id="decryptButton" class="action-button secondary" type="button"><span>←</span>Giải mã</button>
+            <button id="swapButton" class="action-button outline" type="button"><span>⇄</span>Đổi chỗ</button>
+            <button id="clearButton" class="action-button ghost" type="button"><span>↻</span>Xóa</button>
+          </div>
+          <div class="text-panel">
+            <div class="panel-heading"><div><span class="panel-icon lock">C</span><strong>Bản mã</strong></div><span id="cipherCount">0 ký tự</span></div>
+            <textarea id="cipherText" placeholder="Nhập hoặc nhận bản mã tại đây..."></textarea>
+          </div>
+        </section>
+        <section class="bottom-row">
+          <div class="mini-card algorithm-card"><div class="mini-card-title"><span class="mini-icon">◆</span><strong>Thuật toán đang chọn</strong></div><div class="algorithm-current"><span id="algorithmName">Dịch vòng</span><small id="algorithmMode">Z26</small></div></div>
+          <div class="mini-card quick-card"><div class="mini-card-title"><span class="mini-icon yellow">✓</span><strong>Trạng thái</strong></div><div id="message" class="message">Sẵn sàng xử lý dữ liệu.</div></div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
