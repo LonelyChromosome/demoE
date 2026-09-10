@@ -110,10 +110,161 @@ body[data-theme="ben10"] .mini-card {
   border-color: #dce8dd;
 }
 
+body[data-theme="steam"] {
+  --primary-900: #d6e9f8;
+  --primary-800: #66c0f4;
+  --primary-700: #45a9df;
+  --primary-600: #1a9fff;
+  --primary-100: #223a4f;
+  --primary-050: #1b2d3d;
+  --accent: #66c0f4;
+  --accent-dark: #1999ff;
+  --page-bg: #0e141b;
+  --page-bg-soft: #1b2838;
+  --sidebar-bg: #171d25;
+  --sidebar-bg-end: #10151c;
+  --topbar-bg: #171d25;
+  --focus-ring: rgba(102, 192, 244, 0.22);
+}
+
+body[data-theme="steam"] {
+  color: #d6d7d8;
+}
+
+body[data-theme="steam"] .topbar {
+  color: #d6d7d8;
+  border-bottom: 1px solid #2a475e;
+}
+
+body[data-theme="steam"] .menu-button {
+  background: #2a475e;
+}
+
+body[data-theme="steam"] .topbar-search {
+  border-color: #3b5368;
+  background: #2a475e;
+}
+
+body[data-theme="steam"] .topbar-search input {
+  color: #ffffff;
+}
+
+body[data-theme="steam"] .topbar-search input::placeholder {
+  color: #9aa9b6;
+}
+
+body[data-theme="steam"] .topbar-badge {
+  border-color: #3b5368;
+  background: #2a475e;
+  color: #c7d5e0;
+}
+
+body[data-theme="steam"] .breadcrumb,
+body[data-theme="steam"] .panel-heading,
+body[data-theme="steam"] .message,
+body[data-theme="steam"] .alphabet-label,
+body[data-theme="steam"] .theme-copy small {
+  color: #8f98a0;
+}
+
+body[data-theme="steam"] .breadcrumb strong,
+body[data-theme="steam"] .page-heading h1,
+body[data-theme="steam"] .field > span,
+body[data-theme="steam"] .panel-heading > div,
+body[data-theme="steam"] .mini-card-title,
+body[data-theme="steam"] .settings-header h2 {
+  color: #d6e9f8;
+}
+
+body[data-theme="steam"] .control-card,
+body[data-theme="steam"] .workspace-card,
+body[data-theme="steam"] .mini-card {
+  border-color: #2a475e;
+  background: rgba(27, 40, 56, 0.96);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.26);
+}
+
+body[data-theme="steam"] input,
+body[data-theme="steam"] select,
+body[data-theme="steam"] textarea {
+  border-color: #3b5368;
+  background: #16202c;
+  color: #d6d7d8;
+}
+
+body[data-theme="steam"] .alphabet-preview span {
+  border-color: #2a475e;
+  background: #22384a;
+  color: #66c0f4;
+}
+
+body[data-theme="steam"] .action-button.primary {
+  background: linear-gradient(90deg, #06bfff 0%, #2d73ff 100%);
+  color: #ffffff;
+}
+
+body[data-theme="steam"] .action-button.secondary {
+  background: #2a475e;
+  color: #c7d5e0;
+}
+
+body[data-theme="steam"] .action-button.outline {
+  border-color: #66c0f4;
+  background: transparent;
+  color: #66c0f4;
+}
+
+body[data-theme="steam"] .action-button.ghost {
+  background: #202d3a;
+  color: #c7d5e0;
+}
+
+body[data-theme="steam"] .panel-icon {
+  background: #22384a;
+  color: #66c0f4;
+}
+
+body[data-theme="steam"] .panel-icon.lock {
+  background: #1a9fff;
+  color: #ffffff;
+}
+
+body[data-theme="steam"] .algorithm-current small,
+body[data-theme="steam"] .heading-chip {
+  background: #22384a;
+  color: #66c0f4;
+}
+
+body[data-theme="steam"] .settings-panel {
+  border-color: #2a475e;
+  background: #1b2838;
+  color: #d6d7d8;
+}
+
+body[data-theme="steam"] .settings-close {
+  background: #2a475e;
+  color: #c7d5e0;
+}
+
+body[data-theme="steam"] .theme-option {
+  border-color: #2a475e;
+  background: #16202c;
+  color: #d6d7d8;
+}
+
+body[data-theme="steam"] .theme-option.active {
+  border-color: #66c0f4;
+  background: #22384a;
+}
+
 .theme-preview-pink {
   background: linear-gradient(135deg, #111111 0 52%, #fe2c55 52% 78%, #ffffff 78% 100%);
 }
 
 .theme-preview-green {
   background: linear-gradient(135deg, #111111 0 48%, #39d353 48% 76%, #ffffff 76% 100%);
+}
+
+.theme-preview-steam {
+  background: linear-gradient(135deg, #171d25 0 46%, #1b2838 46% 70%, #66c0f4 70% 100%);
 }
