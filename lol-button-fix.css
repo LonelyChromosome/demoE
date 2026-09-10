@@ -1,0 +1,8 @@
+body[data-theme="lol"] .action-button.primary,
+body[data-theme="lol"] .action-button.secondary,
+body[data-theme="lol"] .action-button.outline,
+body[data-theme="lol"] .action-button.ghost {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
