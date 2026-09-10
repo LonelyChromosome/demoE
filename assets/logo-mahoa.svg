@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 160" role="img" aria-labelledby="title">
+  <title id="title">MAHOA</title>
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.38" stop-color="#e7e7f3"/>
+      <stop offset="0.7" stop-color="#9a92b8"/>
+      <stop offset="1" stop-color="#faf7ff"/>
+    </linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d28d9"/>
+      <stop offset="0.5" stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path d="M22 126V38h18l35 39 35-39h18v88h-21V73L75 108 43 73v53Z" fill="url(#metal)"/>
+
+  <path d="M142 126 187 27l45 99h-24l-9-22h-25l-9 22Zm40-42h10l-5-13Z" fill="url(#metal)" fill-rule="evenodd"/>
+  <path d="M142 126 187 27l45 99" fill="none" stroke="url(#violet)" stroke-width="3.5" stroke-linejoin="round" opacity="0.95"/>
+
+  <line x1="187" y1="8" x2="187" y2="151" stroke="url(#violet)" stroke-width="4" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M187 69 198 80 187 91 176 80Z" fill="url(#violet)" stroke="#f5e9ff" stroke-width="1.5" filter="url(#glow)"/>
+
+  <g transform="translate(500 0) scale(-1 1)">
+    <path d="M52 38h20v32h36V38h20v88h-20V91H72v35H52Z" fill="url(#metal)"/>
+    <path d="M167 38h48l19 19v50l-19 19h-48l-19-19V57Zm9 21-8 8v30l8 8h30l8-8V67l-8-8Z" fill="url(#metal)" fill-rule="evenodd"/>
+  </g>
+
+  <path d="M232 124h17" stroke="url(#violet)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M338 124h17" stroke="url(#violet)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+</svg>
