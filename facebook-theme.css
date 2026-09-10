@@ -1,0 +1,225 @@
+body[data-theme="facebook"] {
+  --primary-900: #050505;
+  --primary-800: #1c1e21;
+  --primary-700: #3a3b3c;
+  --primary-600: #0866ff;
+  --primary-100: #e7f3ff;
+  --primary-050: #f5f9ff;
+  --accent: #0866ff;
+  --accent-dark: #075ce6;
+  --page-bg: #f0f2f5;
+  --page-bg-soft: #f0f2f5;
+  --sidebar-bg: #f0f2f5;
+  --sidebar-bg-end: #f0f2f5;
+  --topbar-bg: #ffffff;
+  --focus-ring: rgba(8, 102, 255, 0.16);
+  --border: #dfe3e8;
+  --text: #050505;
+  --muted: #65676b;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="facebook"] {
+  background: #f0f2f5;
+}
+
+body[data-theme="facebook"] .sidebar {
+  background: #f0f2f5;
+  color: #050505;
+  box-shadow: none;
+  border-right: 1px solid #e4e6eb;
+}
+
+body[data-theme="facebook"] .brand-logo {
+  color: #0866ff;
+}
+
+body[data-theme="facebook"] .brand-logo .logo-axis {
+  stroke: #0866ff;
+}
+
+body[data-theme="facebook"] .brand-logo .logo-node {
+  fill: #0866ff;
+}
+
+body[data-theme="facebook"] .nav-item {
+  color: #1c1e21;
+  border-radius: 12px;
+}
+
+body[data-theme="facebook"] .nav-item:hover {
+  background: #e4e6eb;
+  color: #050505;
+}
+
+body[data-theme="facebook"] .nav-item.active {
+  background: #e7f3ff;
+  color: #0866ff;
+}
+
+body[data-theme="facebook"] .nav-item.active::before {
+  background: #0866ff;
+}
+
+body[data-theme="facebook"] .side-footer {
+  color: #65676b;
+}
+
+body[data-theme="facebook"] .status-dot {
+  background: #31a24c;
+  box-shadow: 0 0 0 4px rgba(49, 162, 76, 0.1);
+}
+
+body[data-theme="facebook"] .topbar {
+  min-height: 64px;
+  color: #050505;
+  background: #ffffff;
+  border-bottom: 1px solid #e4e6eb;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="facebook"] .menu-button {
+  background: #e4e6eb;
+  color: #050505;
+  border-radius: 50%;
+}
+
+body[data-theme="facebook"] .topbar-search {
+  min-height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: #f0f2f5;
+}
+
+body[data-theme="facebook"] .topbar-search input {
+  color: #050505;
+}
+
+body[data-theme="facebook"] .topbar-search input::placeholder {
+  color: #65676b;
+}
+
+body[data-theme="facebook"] .topbar-badge {
+  border: 0;
+  border-radius: 999px;
+  background: #e7f3ff;
+  color: #0866ff;
+}
+
+body[data-theme="facebook"] .breadcrumb strong,
+body[data-theme="facebook"] .eyebrow,
+body[data-theme="facebook"] .field > span,
+body[data-theme="facebook"] .panel-heading > div,
+body[data-theme="facebook"] .mini-card-title,
+body[data-theme="facebook"] .settings-header h2 {
+  color: #050505;
+}
+
+body[data-theme="facebook"] .page-heading h1 {
+  color: #050505;
+}
+
+body[data-theme="facebook"] .heading-chip,
+body[data-theme="facebook"] .algorithm-current small,
+body[data-theme="facebook"] .panel-icon,
+body[data-theme="facebook"] .alphabet-preview span {
+  border-color: transparent;
+  background: #e7f3ff;
+  color: #0866ff;
+}
+
+body[data-theme="facebook"] .control-card,
+body[data-theme="facebook"] .workspace-card,
+body[data-theme="facebook"] .mini-card {
+  border-color: #e4e6eb;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="facebook"] input,
+body[data-theme="facebook"] select,
+body[data-theme="facebook"] textarea {
+  border-color: #ccd0d5;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #050505;
+}
+
+body[data-theme="facebook"] input:focus,
+body[data-theme="facebook"] select:focus,
+body[data-theme="facebook"] textarea:focus {
+  border-color: #0866ff;
+  box-shadow: 0 0 0 3px rgba(8, 102, 255, 0.12);
+}
+
+body[data-theme="facebook"] .action-button {
+  min-height: 42px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+body[data-theme="facebook"] .action-button.primary {
+  background: #0866ff;
+  color: #ffffff;
+}
+
+body[data-theme="facebook"] .action-button.primary:hover {
+  background: #075ce6;
+}
+
+body[data-theme="facebook"] .action-button.secondary {
+  background: #e4e6eb;
+  color: #050505;
+}
+
+body[data-theme="facebook"] .action-button.outline {
+  border: 1px solid #ccd0d5;
+  background: #ffffff;
+  color: #0866ff;
+}
+
+body[data-theme="facebook"] .action-button.ghost {
+  background: #f0f2f5;
+  color: #050505;
+}
+
+body[data-theme="facebook"] .settings-overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+body[data-theme="facebook"] .settings-panel {
+  border: 1px solid #e4e6eb;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #050505;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+}
+
+body[data-theme="facebook"] .settings-close {
+  border-radius: 50%;
+  background: #e4e6eb;
+  color: #050505;
+}
+
+body[data-theme="facebook"] .theme-option {
+  border-color: #e4e6eb;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #050505;
+}
+
+body[data-theme="facebook"] .theme-option:hover {
+  border-color: #b8c7de;
+  background: #f7f8fa;
+}
+
+body[data-theme="facebook"] .theme-option.active {
+  border-color: #0866ff;
+  background: #e7f3ff;
+}
+
+.theme-preview-facebook {
+  background: linear-gradient(135deg, #0866ff 0 58%, #ffffff 58% 78%, #e4e6eb 78% 100%);
+}
