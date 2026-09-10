@@ -1,0 +1,119 @@
+body[data-theme="tiktok"] {
+  --primary-900: #111111;
+  --primary-800: #161616;
+  --primary-700: #202020;
+  --primary-600: #fe2c55;
+  --primary-100: #ffe5eb;
+  --primary-050: #fff7f9;
+  --accent: #fe2c55;
+  --accent-dark: #e11d48;
+  --page-bg: #f7f7f8;
+  --page-bg-soft: #ffffff;
+  --sidebar-bg: #111111;
+  --sidebar-bg-end: #050505;
+  --topbar-bg: #ffffff;
+  --focus-ring: rgba(254, 44, 85, 0.14);
+}
+
+body[data-theme="tiktok"] .topbar {
+  color: #111111;
+  border-bottom: 1px solid #ececec;
+}
+
+body[data-theme="tiktok"] .menu-button {
+  background: #f2f2f2;
+}
+
+body[data-theme="tiktok"] .topbar-search {
+  border-color: #dddddd;
+  background: #f5f5f5;
+}
+
+body[data-theme="tiktok"] .topbar-search input::placeholder {
+  color: #777777;
+}
+
+body[data-theme="tiktok"] .topbar-badge {
+  border-color: #dddddd;
+  background: #f5f5f5;
+}
+
+body[data-theme="tiktok"] .action-button.secondary {
+  background: #111111;
+  color: #ffffff;
+}
+
+body[data-theme="tiktok"] .control-card,
+body[data-theme="tiktok"] .workspace-card,
+body[data-theme="tiktok"] .mini-card {
+  border-color: #e7e7e7;
+}
+
+body[data-theme="ben10"] {
+  --primary-900: #111111;
+  --primary-800: #1d5f22;
+  --primary-700: #25862d;
+  --primary-600: #39d353;
+  --primary-100: #ddfbe2;
+  --primary-050: #f4fff5;
+  --accent: #7cff00;
+  --accent-dark: #52b800;
+  --page-bg: #f1f5f1;
+  --page-bg-soft: #ffffff;
+  --sidebar-bg: #111111;
+  --sidebar-bg-end: #050505;
+  --topbar-bg: #39d353;
+  --focus-ring: rgba(57, 211, 83, 0.18);
+}
+
+body[data-theme="ben10"] .topbar {
+  color: #0a0a0a;
+  border-bottom: 1px solid #1fa23a;
+}
+
+body[data-theme="ben10"] .menu-button {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="ben10"] .topbar-search {
+  border-color: rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+body[data-theme="ben10"] .topbar-search input::placeholder {
+  color: #4f5f50;
+}
+
+body[data-theme="ben10"] .topbar-badge {
+  border-color: rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+body[data-theme="ben10"] .action-button.primary {
+  background: #111111;
+  color: #ffffff;
+}
+
+body[data-theme="ben10"] .action-button.secondary {
+  background: #7cff00;
+  color: #102000;
+}
+
+body[data-theme="ben10"] .action-button.outline {
+  border-color: #111111;
+  color: #111111;
+}
+
+body[data-theme="ben10"] .control-card,
+body[data-theme="ben10"] .workspace-card,
+body[data-theme="ben10"] .mini-card {
+  border-color: #dce8dd;
+}
+
+.theme-preview-pink {
+  background: linear-gradient(135deg, #111111 0 52%, #fe2c55 52% 78%, #ffffff 78% 100%);
+}
+
+.theme-preview-green {
+  background: linear-gradient(135deg, #111111 0 48%, #39d353 48% 76%, #ffffff 76% 100%);
+}
