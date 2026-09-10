@@ -3,6 +3,11 @@ facebookThemeLink.rel = "stylesheet";
 facebookThemeLink.href = "facebook-theme.css";
 document.head.appendChild(facebookThemeLink);
 
+const lolButtonFixLink = document.createElement("link");
+lolButtonFixLink.rel = "stylesheet";
+lolButtonFixLink.href = "lol-button-fix.css";
+document.head.appendChild(lolButtonFixLink);
+
 const themeList = document.querySelector(".theme-list");
 
 if (themeList && !themeList.querySelector('[data-theme-option="facebook"]')) {
