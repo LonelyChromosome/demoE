@@ -68,7 +68,8 @@ const allowedThemes = [
   "discord",
   "valorant",
   "lol",
-  "facebook"
+  "facebook",
+  "minecraft"
 ];
 
 applyTheme(allowedThemes.includes(savedTheme) ? savedTheme : "phenikaa");
