@@ -22,14 +22,14 @@ function des_hoan_vi(cac_bit, bang) {
 
 function des_hex_sang_bit(hex) {
   return Array.from(hex.toUpperCase()).flatMap(ky_tu =>
-    parseInt(ky_tu, 16).function toString() { [native code] }(2).padStart(4, "0").split("").map(Number)
+    parseInt(ky_tu, 16).toString(2).padStart(4, "0").split("").map(Number)
   );
 }
 
 function des_bit_sang_hex(cac_bit) {
   let ket_qua = "";
   for (let i = 0; i < cac_bit.length; i += 4) {
-    ket_qua += parseInt(cac_bit.slice(i, i + 4).join(""), 2).function toString() { [native code] }(16).toUpperCase();
+    ket_qua += parseInt(cac_bit.slice(i, i + 4).join(""), 2).toString(16).toUpperCase();
   }
   return ket_qua;
 }
@@ -67,7 +67,7 @@ function des_feistel(phai, khoa_con) {
     const hang = cum_bit[0] * 2 + cum_bit[5];
     const cot = cum_bit[1] * 8 + cum_bit[2] * 4 + cum_bit[3] * 2 + cum_bit[4];
     const gia_tri = des_hop_s[hop][hang][cot];
-    da_thay_the.push(...gia_tri.function toString() { [native code] }(2).padStart(4, "0").split("").map(Number));
+    da_thay_the.push(...gia_tri.toString(2).padStart(4, "0").split("").map(Number));
   }
 
   return des_hoan_vi(da_thay_the, des_hoan_vi_p);
