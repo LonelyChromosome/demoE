@@ -12,7 +12,7 @@ function lay_ma_tran_hill_theo_che_do(giai_ma) {
   const dinh_thuc = modulo(a * d - b * c, modulo_so);
 
   if (ucln(dinh_thuc, modulo_so) !== 1) {
-    throw new Error(\`Định thức ma trận phải khả nghịch trên Z\${modulo_so}.\`);
+    throw new Error(`Định thức ma trận phải khả nghịch trên Z${modulo_so}.`);
   }
 
   if (!giai_ma) {
