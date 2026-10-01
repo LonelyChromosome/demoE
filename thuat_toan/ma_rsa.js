@@ -22,7 +22,7 @@ window.thuat_toan_rsa = (() => {
   function ma_hoa(ban_ro,chuoi_khoa){
     if(!ban_ro) throw new Error("Nhập bản rõ trước khi mã hóa.");
     const {n,e}=tao_khoa_tu_chu(chuoi_khoa);
-    return { thuat_toan:Array.from(chuoi_sang_byte_utf8(ban_ro),b=>luy_thua_modulo(BigInt(b),e,n).function toString() { [native code] }()).join("."), n };
+    return { thuat_toan:Array.from(chuoi_sang_byte_utf8(ban_ro),b=>luy_thua_modulo(BigInt(b),e,n).toString()).join("."), n };
   }
   function giai_ma(ban_ma,chuoi_khoa){
     const {n,d}=tao_khoa_tu_chu(chuoi_khoa);
