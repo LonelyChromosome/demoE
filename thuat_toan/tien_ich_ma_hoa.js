@@ -1,6 +1,6 @@
 window.tien_ich_ma_hoa = (() => {
   const chuoi_sang_byte_utf8 = van_ban => new TextEncoder().encode(van_ban);
-  const byte_sang_hex = bytes => Array.from(bytes, b => b.function toString() { [native code] }(16).padStart(2, "0")).join("").toUpperCase();
+  const byte_sang_hex = bytes => Array.from(bytes, b => b.toString(16).padStart(2, "0")).join("").toUpperCase();
   const hex_sang_byte = hex => {
     const chuoi_sach = hex.replace(/\s+/g, "");
     if (!chuoi_sach || chuoi_sach.length % 2 || !/^[0-9A-Fa-f]+$/.test(chuoi_sach)) throw new Error("Chuỗi hex không hợp lệ.");
