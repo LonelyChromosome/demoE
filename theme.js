@@ -8,6 +8,11 @@ lolButtonFixLink.rel = "stylesheet";
 lolButtonFixLink.href = "lol-button-fix.css";
 document.head.appendChild(lolButtonFixLink);
 
+const advancedCryptoStyle = document.createElement("link");
+advancedCryptoStyle.rel = "stylesheet";
+advancedCryptoStyle.href = "advanced-crypto.css";
+document.head.appendChild(advancedCryptoStyle);
+
 const themeList = document.querySelector(".theme-list");
 
 if (themeList && !themeList.querySelector('[data-theme-option="facebook"]')) {
@@ -78,3 +83,8 @@ const allowedThemes = [
 ];
 
 applyTheme(allowedThemes.includes(savedTheme) ? savedTheme : "phenikaa");
+
+const advancedCryptoScript = document.createElement("script");
+advancedCryptoScript.src = "advanced-crypto.js";
+advancedCryptoScript.defer = true;
+document.body.appendChild(advancedCryptoScript);
