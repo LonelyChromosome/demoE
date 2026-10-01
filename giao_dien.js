@@ -1,16 +1,16 @@
 const lien_ket_giao_dien_facebook = document.createElement("link");
 lien_ket_giao_dien_facebook.rel = "stylesheet";
-lien_ket_giao_dien_facebook.href = "facebook-theme.css";
+lien_ket_giao_dien_facebook.href = "giao_dien_facebook.css";
 document.head.appendChild(lien_ket_giao_dien_facebook);
 
 const lien_ket_sua_nut_lol = document.createElement("link");
 lien_ket_sua_nut_lol.rel = "stylesheet";
-lien_ket_sua_nut_lol.href = "lol-button-fix.css";
+lien_ket_sua_nut_lol.href = "sua_nut_lol.css";
 document.head.appendChild(lien_ket_sua_nut_lol);
 
 const lien_ket_css_ma_hoa_nang_cao = document.createElement("link");
 lien_ket_css_ma_hoa_nang_cao.rel = "stylesheet";
-lien_ket_css_ma_hoa_nang_cao.href = "advanced-crypto.css";
+lien_ket_css_ma_hoa_nang_cao.href = "ma_hoa_nang_cao.css";
 document.head.appendChild(lien_ket_css_ma_hoa_nang_cao);
 
 const danh_sach_giao_dien = document.querySelector(".theme-list");
