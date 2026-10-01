@@ -1,0 +1,414 @@
+.brand-block {
+  gap: 0;
+  padding-top: 4px;
+}
+
+.brand-logo {
+  display: block;
+  width: 174px;
+  height: 48px;
+  color: #ffffff;
+  overflow: visible;
+}
+
+.brand-logo .logo-word {
+  fill: currentColor;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.brand-logo .logo-axis {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.brand-logo .logo-node {
+  fill: var(--accent);
+}
+
+.settings-panel {
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+}
+
+body[data-theme="discord"] {
+  --primary-900: #ffffff;
+  --primary-800: #c9cdfb;
+  --primary-700: #7983f5;
+  --primary-600: #5865f2;
+  --primary-100: #353945;
+  --primary-050: #2b2d31;
+  --accent: #5865f2;
+  --accent-dark: #4752c4;
+  --page-bg: #1e1f22;
+  --page-bg-soft: #232428;
+  --sidebar-bg: #111214;
+  --sidebar-bg-end: #0b0c0e;
+  --topbar-bg: #2b2d31;
+  --focus-ring: rgba(88, 101, 242, 0.28);
+  --border: #3f4147;
+  --text: #f2f3f5;
+  --muted: #b5bac1;
+}
+
+body[data-theme="discord"] .topbar {
+  color: #f2f3f5;
+  border-bottom: 1px solid #35373c;
+}
+
+body[data-theme="discord"] .topbar-search {
+  border-color: #404249;
+  background: #1e1f22;
+}
+
+body[data-theme="discord"] .topbar-search input {
+  color: #f2f3f5;
+}
+
+body[data-theme="discord"] .topbar-search input::placeholder {
+  color: #949ba4;
+}
+
+body[data-theme="discord"] .topbar-badge {
+  border-color: #404249;
+  background: #1e1f22;
+  color: #dbdee1;
+}
+
+body[data-theme="discord"] .control-card,
+body[data-theme="discord"] .workspace-card,
+body[data-theme="discord"] .mini-card {
+  border-color: #3f4147;
+  background: #2b2d31;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+}
+
+body[data-theme="discord"] input,
+body[data-theme="discord"] select,
+body[data-theme="discord"] textarea {
+  border-color: #3f4147;
+  background: #1e1f22;
+  color: #f2f3f5;
+}
+
+body[data-theme="discord"] .alphabet-preview span,
+body[data-theme="discord"] .algorithm-current small,
+body[data-theme="discord"] .heading-chip,
+body[data-theme="discord"] .panel-icon {
+  border-color: #474a52;
+  background: #353945;
+  color: #c9cdfb;
+}
+
+body[data-theme="discord"] .action-button.primary {
+  background: #5865f2;
+  color: #ffffff;
+}
+
+body[data-theme="discord"] .action-button.secondary {
+  background: #3f4147;
+  color: #f2f3f5;
+}
+
+body[data-theme="discord"] .action-button.outline {
+  border-color: #5865f2;
+  background: transparent;
+  color: #aeb5ff;
+}
+
+body[data-theme="discord"] .action-button.ghost {
+  background: #1e1f22;
+  color: #dbdee1;
+}
+
+body[data-theme="discord"] .settings-panel,
+body[data-theme="discord"] .theme-option {
+  border-color: #3f4147;
+  background: #2b2d31;
+  color: #f2f3f5;
+}
+
+body[data-theme="discord"] .theme-option.active {
+  background: #353945;
+}
+
+body[data-theme="valorant"] {
+  --primary-900: #ece8e1;
+  --primary-800: #ff6b78;
+  --primary-700: #ff5967;
+  --primary-600: #ff4655;
+  --primary-100: #23303a;
+  --primary-050: #17232d;
+  --accent: #ff4655;
+  --accent-dark: #d93a47;
+  --page-bg: #0f1923;
+  --page-bg-soft: #13232f;
+  --sidebar-bg: #0a1219;
+  --sidebar-bg-end: #080d12;
+  --topbar-bg: #111d27;
+  --focus-ring: rgba(255, 70, 85, 0.24);
+  --border: #3a4a55;
+  --text: #ece8e1;
+  --muted: #9aa7ad;
+}
+
+body[data-theme="valorant"] .topbar {
+  color: #ece8e1;
+  border-bottom: 1px solid #2a3a45;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.24);
+}
+
+body[data-theme="valorant"] .topbar-search,
+body[data-theme="valorant"] .topbar-badge {
+  border-color: #3a4a55;
+  border-radius: 2px;
+  background: #17232d;
+}
+
+body[data-theme="valorant"] .topbar-search input {
+  color: #ece8e1;
+}
+
+body[data-theme="valorant"] .topbar-search input::placeholder {
+  color: #87959c;
+}
+
+body[data-theme="valorant"] .control-card,
+body[data-theme="valorant"] .workspace-card,
+body[data-theme="valorant"] .mini-card {
+  border-color: #3a4a55;
+  border-radius: 2px;
+  background: linear-gradient(145deg, #14222d 0%, #101b24 100%);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.24);
+  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+}
+
+body[data-theme="valorant"] input,
+body[data-theme="valorant"] select,
+body[data-theme="valorant"] textarea {
+  border-color: #465963;
+  border-radius: 0;
+  background: #0f1923;
+  color: #ece8e1;
+}
+
+body[data-theme="valorant"] .alphabet-preview span,
+body[data-theme="valorant"] .algorithm-current small,
+body[data-theme="valorant"] .heading-chip,
+body[data-theme="valorant"] .panel-icon {
+  border-radius: 0;
+  border-color: #394a54;
+  background: #1d2a34;
+  color: #ece8e1;
+}
+
+body[data-theme="valorant"] .action-button {
+  position: relative;
+  border-radius: 0;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+}
+
+body[data-theme="valorant"] .action-button.primary {
+  background: #ff4655;
+  color: #ffffff;
+}
+
+body[data-theme="valorant"] .action-button.secondary {
+  background: #ece8e1;
+  color: #0f1923;
+}
+
+body[data-theme="valorant"] .action-button.outline {
+  border: 1px solid #ff4655;
+  background: #17232d;
+  color: #ff7b86;
+}
+
+body[data-theme="valorant"] .action-button.ghost {
+  background: #263641;
+  color: #d7dbd8;
+}
+
+body[data-theme="valorant"] .settings-panel,
+body[data-theme="valorant"] .theme-option {
+  border-radius: 2px;
+  border-color: #3a4a55;
+  background: #111d27;
+  color: #ece8e1;
+}
+
+body[data-theme="lol"] {
+  --primary-900: #f0e6d2;
+  --primary-800: #c8aa6e;
+  --primary-700: #c89b3c;
+  --primary-600: #0ac8b9;
+  --primary-100: #1e2d35;
+  --primary-050: #111f27;
+  --accent: #c89b3c;
+  --accent-dark: #a47a20;
+  --page-bg: #06131a;
+  --page-bg-soft: #0a2029;
+  --sidebar-bg: #051016;
+  --sidebar-bg-end: #02090d;
+  --topbar-bg: #091a22;
+  --focus-ring: rgba(10, 200, 185, 0.2);
+  --border: #5c4b27;
+  --text: #f0e6d2;
+  --muted: #9d947f;
+}
+
+body[data-theme="lol"] {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(10, 200, 185, 0.11), transparent 28%),
+    linear-gradient(135deg, #030b10 0%, #071821 48%, #031016 100%);
+}
+
+body[data-theme="lol"] .topbar {
+  color: #f0e6d2;
+  border-bottom: 1px solid #785a28;
+  background: linear-gradient(180deg, #0d222b 0%, #07161d 100%);
+}
+
+body[data-theme="lol"] .topbar-search,
+body[data-theme="lol"] .topbar-badge {
+  border-color: #785a28;
+  border-radius: 0;
+  background: #0a1820;
+}
+
+body[data-theme="lol"] .topbar-search input {
+  color: #f0e6d2;
+}
+
+body[data-theme="lol"] .topbar-search input::placeholder {
+  color: #7f7a6b;
+}
+
+body[data-theme="lol"] .control-card,
+body[data-theme="lol"] .workspace-card,
+body[data-theme="lol"] .mini-card {
+  position: relative;
+  border: 1px solid #785a28;
+  border-radius: 0;
+  background: linear-gradient(145deg, #0b1a21 0%, #08141a 100%);
+  box-shadow:
+    inset 0 0 0 2px #09151b,
+    inset 0 0 0 3px rgba(200, 155, 60, 0.46),
+    0 18px 36px rgba(0, 0, 0, 0.34);
+  clip-path: polygon(11px 0, calc(100% - 11px) 0, 100% 11px, 100% calc(100% - 11px), calc(100% - 11px) 100%, 11px 100%, 0 calc(100% - 11px), 0 11px);
+}
+
+body[data-theme="lol"] .control-card::before,
+body[data-theme="lol"] .workspace-card::before,
+body[data-theme="lol"] .mini-card::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  pointer-events: none;
+  border: 1px solid rgba(10, 200, 185, 0.12);
+  clip-path: inherit;
+}
+
+body[data-theme="lol"] input,
+body[data-theme="lol"] select,
+body[data-theme="lol"] textarea {
+  border: 1px solid #785a28;
+  border-radius: 0;
+  background: #071218;
+  color: #f0e6d2;
+  box-shadow: inset 0 0 0 1px #0f2b32;
+}
+
+body[data-theme="lol"] input:focus,
+body[data-theme="lol"] select:focus,
+body[data-theme="lol"] textarea:focus {
+  border-color: #0ac8b9;
+  box-shadow: 0 0 0 1px #0ac8b9, 0 0 18px rgba(10, 200, 185, 0.14);
+}
+
+body[data-theme="lol"] .alphabet-preview span,
+body[data-theme="lol"] .algorithm-current small,
+body[data-theme="lol"] .heading-chip,
+body[data-theme="lol"] .panel-icon {
+  border: 1px solid #785a28;
+  border-radius: 0;
+  background: #0b1b22;
+  color: #c8aa6e;
+}
+
+body[data-theme="lol"] .action-button {
+  border-radius: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 10px 100%, 0 50%);
+}
+
+body[data-theme="lol"] .action-button.primary {
+  border: 1px solid #c89b3c;
+  background: linear-gradient(180deg, #0bc6b6 0%, #087e7b 100%);
+  color: #07131a;
+  box-shadow: inset 0 0 0 2px #062c32, 0 0 18px rgba(10, 200, 185, 0.14);
+}
+
+body[data-theme="lol"] .action-button.secondary {
+  border: 1px solid #c89b3c;
+  background: linear-gradient(180deg, #c8aa6e 0%, #8d6c2d 100%);
+  color: #07131a;
+}
+
+body[data-theme="lol"] .action-button.outline {
+  border: 1px solid #c89b3c;
+  background: #09171e;
+  color: #c8aa6e;
+}
+
+body[data-theme="lol"] .action-button.ghost {
+  border: 1px solid #2d4651;
+  background: #0c1d25;
+  color: #9db5bd;
+}
+
+body[data-theme="lol"] .page-heading h1,
+body[data-theme="lol"] .mini-card-title,
+body[data-theme="lol"] .field > span,
+body[data-theme="lol"] .panel-heading > div,
+body[data-theme="lol"] .settings-header h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #f0e6d2;
+}
+
+body[data-theme="lol"] .eyebrow,
+body[data-theme="lol"] .settings-kicker {
+  color: #c89b3c;
+}
+
+body[data-theme="lol"] .settings-panel,
+body[data-theme="lol"] .theme-option {
+  border-radius: 0;
+  border-color: #785a28;
+  background: #09171e;
+  color: #f0e6d2;
+}
+
+body[data-theme="lol"] .theme-option.active {
+  border-color: #0ac8b9;
+  background: #0d222b;
+}
+
+.theme-preview-discord {
+  background: linear-gradient(135deg, #111214 0 45%, #5865f2 45% 74%, #ffffff 74% 100%);
+}
+
+.theme-preview-valorant {
+  background: linear-gradient(135deg, #0f1923 0 48%, #ff4655 48% 76%, #ece8e1 76% 100%);
+}
+
+.theme-preview-lol {
+  background: linear-gradient(135deg, #06131a 0 45%, #0ac8b9 45% 70%, #c89b3c 70% 100%);
+}
