@@ -226,197 +226,34 @@
     if (open) refreshBits();
   });
 
-  function textToDesHex(text, label) {
-    const value = text.trim();
-    if (!value) throw new Error(`${label} không được để trống.`);
-    if (!/^[\p{L}\s]+$/u.test(value)) throw new Error(`${label} DES chỉ nhập bằng chữ cái.`);
-    const bytes = utf8Bytes(value);
-    if (bytes.length > 8) throw new Error(`${label} DES tối đa 8 byte UTF-8.`);
-    const block = new Uint8Array(8);
-    block.set(bytes);
-    return bytesToHex(block);
-  }
-
-  function desHexToText(hex) {
-    const bytes = hexToBytes(hex);
-    let end = bytes.length;
-    while (end > 0 && bytes[end - 1] === 0) end -= 1;
-    return new TextDecoder().decode(bytes.slice(0, end));
-  }
-
-  async function processDes(decrypt) {
-    const keyHex = textToDesHex(requireLetterKey(currentKeyText()), 'Khóa');
-    if (typeof window.desBlock !== 'function') throw new Error('Không tìm thấy lõi DES hiện tại.');
-    if (!decrypt) {
-      const dataHex = textToDesHex(plainText.value, 'Bản rõ');
-      cipherText.value = window.desBlock(dataHex, keyHex, false);
-    } else {
-      const dataHex = cipherText.value.replace(/\s+/g, '').toUpperCase();
-      if (!/^[0-9A-F]{16}$/.test(dataHex)) throw new Error('Bản mã DES phải gồm đúng 16 ký tự hex.');
-      plainText.value = desHexToText(window.desBlock(dataHex, keyHex, true));
-    }
-  }
-
-  async function aesKeyFromText(keyText) {
-    requireLetterKey(keyText);
-    const digest = await crypto.subtle.digest('SHA-256', utf8Bytes(keyText));
-    return crypto.subtle.importKey('raw', new Uint8Array(digest).slice(0, 16), {name:'AES-GCM'}, false, ['encrypt', 'decrypt']);
-  }
-
-  async function processAes(decrypt) {
-    if (!crypto.subtle) throw new Error('Trình duyệt không hỗ trợ Web Crypto API.');
-    const key = await aesKeyFromText(currentKeyText());
-    if (!decrypt) {
-      if (!plainText.value) throw new Error('Nhập bản rõ trước khi mã hóa.');
-      const iv = crypto.getRandomValues(new Uint8Array(12));
-      const encrypted = new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, utf8Bytes(plainText.value)));
-      cipherText.value = bytesToBase64(concatBytes(iv, encrypted));
-    } else {
-      const packed = base64ToBytes(cipherText.value);
-      if (packed.length < 13) throw new Error('Bản mã AES không hợp lệ.');
-      const iv = packed.slice(0, 12);
-      const data = packed.slice(12);
-      const decrypted = await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, data);
-      plainText.value = new TextDecoder().decode(decrypted);
-    }
-  }
-
-  function gcdBig(a, b) {
-    let x = a < 0n ? -a : a;
-    let y = b < 0n ? -b : b;
-    while (y) [x, y] = [y, x % y];
-    return x;
-  }
-
-  function modPow(base, exponent, modulus) {
-    let result = 1n;
-    let b = base % modulus;
-    let e = exponent;
-    while (e > 0n) {
-      if (e & 1n) result = (result * b) % modulus;
-      b = (b * b) % modulus;
-      e >>= 1n;
-    }
-    return result;
-  }
-
-  function egcd(a, b) {
-    if (b === 0n) return [a, 1n, 0n];
-    const [g, x1, y1] = egcd(b, a % b);
-    return [g, y1, x1 - (a / b) * y1];
-  }
-
-  function modInverseBig(a, m) {
-    const [g, x] = egcd(a, m);
-    if (g !== 1n) throw new Error('Không tìm được nghịch đảo mô-đun RSA.');
-    return (x % m + m) % m;
-  }
-
-  function isPrime(n) {
-    if (n < 2) return false;
-    if (n % 2 === 0) return n === 2;
-    for (let i = 3; i * i <= n; i += 2) if (n % i === 0) return false;
-    return true;
-  }
-
-  function nextPrime(n) {
-    let value = Math.max(257, Math.floor(n));
-    if (value % 2 === 0) value += 1;
-    while (!isPrime(value)) value += 2;
-    return value;
-  }
-
-  function hashSeed(text) {
-    let h = 2166136261 >>> 0;
-    for (const b of utf8Bytes(text)) {
-      h ^= b;
-      h = Math.imul(h, 16777619) >>> 0;
-    }
-    return h >>> 0;
-  }
-
-  function rsaKeyFromText(keyText) {
-    const key = requireLetterKey(keyText);
-    const seed = hashSeed(key);
-    const p = BigInt(nextPrime(2000 + (seed % 5000)));
-    let qNum = nextPrime(8000 + ((seed >>> 8) % 7000));
-    if (BigInt(qNum) === p) qNum = nextPrime(qNum + 2);
-    const q = BigInt(qNum);
-    const n = p * q;
-    const phi = (p - 1n) * (q - 1n);
-    let e = 65537n;
-    if (gcdBig(e, phi) !== 1n) e = 257n;
-    if (gcdBig(e, phi) !== 1n) e = 17n;
-    const d = modInverseBig(e, phi);
-    return {p, q, n, e, d};
-  }
-
-  function processRsa(decrypt) {
-    const {n, e, d} = rsaKeyFromText(currentKeyText());
-    if (!decrypt) {
-      if (!plainText.value) throw new Error('Nhập bản rõ trước khi mã hóa.');
-      const encrypted = Array.from(utf8Bytes(plainText.value), b => modPow(BigInt(b), e, n).toString());
-      cipherText.value = encrypted.join('.');
-    } else {
-      const chunks = cipherText.value.trim().split('.').filter(Boolean);
-      if (!chunks.length || chunks.some(v => !/^\d+$/.test(v))) throw new Error('Bản mã RSA không hợp lệ.');
-      const bytes = Uint8Array.from(chunks.map(v => Number(modPow(BigInt(v), d, n))));
-      plainText.value = new TextDecoder().decode(bytes);
-    }
-    algorithmMode.textContent = `RSA n=${n.toString()}`;
-  }
-
-  function md5(text) {
-    function add(x, y) { return (((x >>> 0) + (y >>> 0)) & 0xffffffff) | 0; }
-    function rol(x, c) { return (x << c) | (x >>> (32 - c)); }
-    const bytes = Array.from(utf8Bytes(text));
-    const bitLen = bytes.length * 8;
-    bytes.push(0x80);
-    while ((bytes.length % 64) !== 56) bytes.push(0);
-    for (let i = 0; i < 8; i++) bytes.push((bitLen / Math.pow(256, i)) & 0xff);
-    let a0 = 0x67452301 | 0, b0 = 0xefcdab89 | 0, c0 = 0x98badcfe | 0, d0 = 0x10325476 | 0;
-    const s = [7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21];
-    const K = Array.from({length:64}, (_, i) => Math.floor(Math.abs(Math.sin(i + 1)) * 2 ** 32) | 0);
-    for (let offset = 0; offset < bytes.length; offset += 64) {
-      const M = new Array(16).fill(0).map((_, i) =>
-        (bytes[offset+i*4]) | (bytes[offset+i*4+1] << 8) | (bytes[offset+i*4+2] << 16) | (bytes[offset+i*4+3] << 24));
-      let A=a0, B=b0, C=c0, D=d0;
-      for (let i=0;i<64;i++) {
-        let F, g;
-        if (i<16) { F=(B&C)|((~B)&D); g=i; }
-        else if (i<32) { F=(D&B)|((~D)&C); g=(5*i+1)%16; }
-        else if (i<48) { F=B^C^D; g=(3*i+5)%16; }
-        else { F=C^(B|(~D)); g=(7*i)%16; }
-        const temp=D; D=C; C=B;
-        B=add(B, rol(add(add(add(A,F),K[i]),M[g]), s[i]));
-        A=temp;
-      }
-      a0=add(a0,A); b0=add(b0,B); c0=add(c0,C); d0=add(d0,D);
-    }
-    const out = [];
-    for (const word of [a0,b0,c0,d0]) for (let i=0;i<4;i++) out.push((word >>> (8*i)) & 0xff);
-    return out.map(b => b.toString(16).padStart(2,'0')).join('');
-  }
-
-  async function sha256(text) {
-    const digest = await crypto.subtle.digest('SHA-256', utf8Bytes(text));
-    return bytesToHex(new Uint8Array(digest)).toLowerCase();
-  }
-
-  async function processHash(algo) {
-    if (!plainText.value) throw new Error('Nhập dữ liệu trước khi băm.');
-    cipherText.value = algo === 'md5' ? md5(plainText.value) : await sha256(plainText.value);
-  }
+  // Phần thuật toán nằm trong thư mục algorithms/. File này chỉ điều phối giao diện.
 
   async function handleAdvanced(mode) {
     const algo = cipherSelect.value;
     if (!advancedAlgorithms.has(algo)) return;
     const decrypt = mode === 'decrypt';
     try {
-      if (algo === 'des') await processDes(decrypt);
-      else if (algo === 'aes') await processAes(decrypt);
-      else if (algo === 'rsa') processRsa(decrypt);
-      else if (hashAlgorithms.has(algo)) await processHash(algo);
+      const key = currentKeyText();
+      if (algo === 'des') {
+        if (decrypt) plainText.value = window.DESAlgorithm.decryptText(cipherText.value, key);
+        else cipherText.value = window.DESAlgorithm.encryptText(plainText.value, key);
+      } else if (algo === 'aes') {
+        if (decrypt) plainText.value = await window.AESAlgorithm.decrypt(cipherText.value, key);
+        else cipherText.value = await window.AESAlgorithm.encrypt(plainText.value, key);
+      } else if (algo === 'rsa') {
+        const result = decrypt
+          ? window.RSAAlgorithm.decrypt(cipherText.value, key)
+          : window.RSAAlgorithm.encrypt(plainText.value, key);
+        if (decrypt) plainText.value = result.plain;
+        else cipherText.value = result.cipher;
+        algorithmMode.textContent = `RSA n=${result.n.toString()}`;
+      } else if (algo === 'md5') {
+        if (!plainText.value) throw new Error('Nhập dữ liệu trước khi băm.');
+        cipherText.value = window.MD5Algorithm.hash(plainText.value);
+      } else if (algo === 'sha256') {
+        if (!plainText.value) throw new Error('Nhập dữ liệu trước khi băm.');
+        cipherText.value = await window.SHA256Algorithm.hash(plainText.value);
+      }
       document.getElementById('plainCount').textContent = `${Array.from(plainText.value).length} ký tự`;
       document.getElementById('cipherCount').textContent = `${Array.from(cipherText.value).length} ký tự`;
       refreshBits();
