@@ -83,8 +83,3 @@ const allowedThemes = [
 ];
 
 applyTheme(allowedThemes.includes(savedTheme) ? savedTheme : "phenikaa");
-
-const advancedCryptoScript = document.createElement("script");
-advancedCryptoScript.src = "advanced-crypto.js";
-advancedCryptoScript.defer = true;
-document.body.appendChild(advancedCryptoScript);
