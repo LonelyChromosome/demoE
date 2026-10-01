@@ -30,8 +30,8 @@ window.tien_ich_ma_hoa = (() => {
 
   const kiem_tra_khoa_chu = (gia_tri, nhan = "Khóa") => {
     const khoa = gia_tri.trim();
-    if (!khoa) throw new Error(\`\${nhan} không được để trống.\`);
-    if (!/^[\p{L}\s]+$/u.test(khoa)) throw new Error(\`\${nhan} chỉ nhập bằng chữ cái.\`);
+    if (!khoa) throw new Error(`${nhan} không được để trống.`);
+    if (!/^[\p{L}\s]+$/u.test(khoa)) throw new Error(`${nhan} chỉ nhập bằng chữ cái.`);
     return khoa;
   };
 
