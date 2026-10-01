@@ -43,21 +43,21 @@
 
   const truong_nhom = document.createElement("label");
   truong_nhom.className = "field crypto-category-field";
-  truong_nhom.innerHTML = \`
+  truong_nhom.innerHTML = `
     <span>Nhóm thuật toán</span>
     <select id="categorySelect" aria-label="Nhóm thuật toán">
       <option value="classical">Mã hóa cổ điển</option>
       <option value="modern">Mã hóa hiện đại</option>
       <option value="public">Mã hóa công khai</option>
       <option value="hash">Hàm băm</option>
-    </select>\`;
+    </select>`;
   luoi_dieu_khien.insertBefore(truong_nhom, luoi_dieu_khien.firstElementChild);
 
   const chon_nhom = document.getElementById("categorySelect");
 
   const khung_bit = document.createElement("section");
   khung_bit.className = "bit-panel";
-  khung_bit.innerHTML = \`
+  khung_bit.innerHTML = `
     <div class="bit-panel-head">
       <div>
         <strong>Chuyển chữ sang bit</strong>
@@ -68,7 +68,7 @@
     <div id="bitPanelBody" class="bit-panel-body" hidden>
       <div class="bit-box"><span>Bản rõ</span><pre id="plainBits">—</pre></div>
       <div class="bit-box"><span>Khóa</span><pre id="keyBits">—</pre></div>
-    </div>\`;
+    </div>`;
   dai_bang_chu_cai.insertAdjacentElement("afterend", khung_bit);
 
   const nut_an_hien_bit = document.getElementById("toggleBitsButton");
@@ -104,7 +104,7 @@
 
   function dat_thong_bao_nang_cao(van_ban, loai = "") {
     thong_bao.textContent = van_ban;
-    thong_bao.className = loai ? \`message \${loai}\` : "message";
+    thong_bao.className = loai ? `message ${loai}` : "message";
   }
 
   function chuan_hoa_theo_bang_chu_cai(ky_tu) {
@@ -121,7 +121,7 @@
       const ky_tu_chuan = chuan_hoa_theo_bang_chu_cai(ky_tu);
       if (!ky_tu_chuan) continue;
       const chi_so = bang_chu.indexOf(ky_tu_chuan);
-      if (chi_so >= 0) cac_phan.push(\`\${ky_tu_chuan}:\${chi_so.toString(2).padStart(5, "0")}\`);
+      if (chi_so >= 0) cac_phan.push(`${ky_tu_chuan}:${chi_so.toString(2).padStart(5, "0")}`);
     }
 
     return cac_phan.length ? cac_phan.join("  ") : "—";
@@ -140,11 +140,11 @@
 
   function lam_moi_bit() {
     bit_ban_ro.textContent =
-      \`Z\${chon_bang_chu_cai.value.slice(1)}: \${bit_theo_bang_chu_cai(ban_ro.value)}\nUTF-8: \${chuoi_bit_utf8(ban_ro.value)}\`;
+      `Z${chon_bang_chu_cai.value.slice(1)}: ${bit_theo_bang_chu_cai(ban_ro.value)}\nUTF-8: ${chuoi_bit_utf8(ban_ro.value)}`;
 
     const khoa = lay_khoa_hien_tai();
     bit_khoa.textContent = khoa
-      ? \`Z\${chon_bang_chu_cai.value.slice(1)}: \${bit_theo_bang_chu_cai(khoa)}\nUTF-8: \${chuoi_bit_utf8(khoa)}\`
+      ? `Z${chon_bang_chu_cai.value.slice(1)}: ${bit_theo_bang_chu_cai(khoa)}\nUTF-8: ${chuoi_bit_utf8(khoa)}`
       : "—";
   }
 
@@ -182,7 +182,7 @@
       thuat_toan === "rsa" ? "RSA EDU" : "HASH";
 
     xem_truoc_bang_chu_cai.innerHTML =
-      bang_chu_cai_bit[chon_bang_chu_cai.value].map(ky_tu => \`<span>\${ky_tu}</span>\`).join("");
+      bang_chu_cai_bit[chon_bang_chu_cai.value].map(ky_tu => `<span>${ky_tu}</span>`).join("");
 
     ban_ro.placeholder = "Nhập bản rõ bằng chữ cái tại đây...";
     if (thuat_toan === "des") ban_ma.placeholder = "Bản mã DES dạng hexadecimal";
@@ -209,7 +209,7 @@
     if (!danh_sach) return;
 
     chon_thuat_toan.innerHTML = danh_sach
-      .map(([gia_tri, nhan]) => \`<option value="\${gia_tri}">\${nhan}</option>\`)
+      .map(([gia_tri, nhan]) => `<option value="${gia_tri}">${nhan}</option>`)
       .join("");
 
     chon_thuat_toan.dispatchEvent(new Event("change"));
@@ -256,7 +256,7 @@
         if (dang_giai_ma) ban_ro.value = ket_qua.ban_ro_ket_qua;
         else ban_ma.value = ket_qua.ban_ma_ket_qua;
 
-        che_do_thuat_toan.textContent = \`RSA n=\${ket_qua.n.toString()}\`;
+        che_do_thuat_toan.textContent = `RSA n=${ket_qua.n.toString()}`;
       } else if (thuat_toan === "md5") {
         if (!ban_ro.value) throw new Error("Nhập dữ liệu trước khi băm.");
         ban_ma.value = window.thuat_toan_md5.bam(ban_ro.value);
@@ -279,8 +279,8 @@
   }
 
   function dem_lai_ky_tu() {
-    document.getElementById("plainCount").textContent = \`\${Array.from(ban_ro.value).length} ký tự\`;
-    document.getElementById("cipherCount").textContent = \`\${Array.from(ban_ma.value).length} ký tự\`;
+    document.getElementById("plainCount").textContent = `${Array.from(ban_ro.value).length} ký tự`;
+    document.getElementById("cipherCount").textContent = `${Array.from(ban_ma.value).length} ký tự`;
   }
 
   nut_ma_hoa.addEventListener("click", su_kien => {
