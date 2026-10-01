@@ -162,7 +162,7 @@ function hien_thi_bang_chu_cai() {
     xem_truoc_bang_chu_cai.innerHTML = "<span>HEX</span><span>64 BIT</span><span>1 BLOCK</span>";
     return;
   }
-  xem_truoc_bang_chu_cai.innerHTML = lay_bang_chu_cai().map(ky_tu => \`<span>\${ky_tu}</span>\`).join("");
+  xem_truoc_bang_chu_cai.innerHTML = lay_bang_chu_cai().map(ky_tu => `<span>${ky_tu}</span>`).join("");
 }
 
 function cap_nhat_tieu_de() {
@@ -173,13 +173,13 @@ function cap_nhat_tieu_de() {
 }
 
 function cap_nhat_bo_dem() {
-  dem_ban_ro.textContent = \`\${Array.from(ban_ro.value).length} ký tự\`;
-  dem_ban_ma.textContent = \`\${Array.from(ban_ma.value).length} ký tự\`;
+  dem_ban_ro.textContent = `${Array.from(ban_ro.value).length} ký tự`;
+  dem_ban_ma.textContent = `${Array.from(ban_ma.value).length} ký tự`;
 }
 
 function dat_thong_bao(van_ban, loai = "") {
   thong_bao.textContent = van_ban;
-  thong_bao.className = loai ? \`message \${loai}\` : "message";
+  thong_bao.className = loai ? `message ${loai}` : "message";
 }
 
 function lam_moi_giao_dien() {
