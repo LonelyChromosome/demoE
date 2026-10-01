@@ -103,7 +103,7 @@
   }
 
   function byte_sang_hex(bytes) {
-    return Array.from(bytes, b => b.function toString() { [native code] }(16).padStart(2, '0')).join('').toUpperCase();
+    return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
   }
 
   function hex_sang_byte(hex) {
@@ -150,7 +150,7 @@
   function chuoi_bit_utf8(van_ban) {
     const bytes = chuoi_sang_byte_utf8(van_ban);
     if (!bytes.length) return '—';
-    return Array.from(bytes, b => b.function toString() { [native code] }(2).padStart(8, '0')).join(' ');
+    return Array.from(bytes, b => b.toString(2).padStart(8, '0')).join(' ');
   }
 
   function lay_khoa_hien_tai() {
