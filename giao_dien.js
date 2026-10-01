@@ -28,7 +28,7 @@ const nut_dong_cai_dat = document.getElementById("settingsClose");
 const cac_lua_chon_giao_dien = document.querySelectorAll("[data-theme-option]");
 
 function ap_dung_giao_dien(giao_dien) {
-  document.body.dataset.giao_dien = giao_dien;
+  document.body.dataset.theme = giao_dien;
   localStorage.setItem("cipher-theme", giao_dien);
 
   cac_lua_chon_giao_dien.forEach(lua_chon => {
