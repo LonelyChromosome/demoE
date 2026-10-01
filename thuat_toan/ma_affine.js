@@ -12,7 +12,7 @@ function ma_affine(van_ban, giai_ma = false) {
   const b = Math.trunc(Number(b_tho));
 
   if (ucln(a, modulo_so) !== 1) {
-    throw new Error(\`Giá trị a phải nguyên tố cùng nhau với \${modulo_so}.\`);
+    throw new Error(`Giá trị a phải nguyên tố cùng nhau với ${modulo_so}.`);
   }
 
   if (!giai_ma) {
