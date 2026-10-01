@@ -76,7 +76,7 @@ function des_feistel(phai, khoa_con) {
 function chuan_hoa_des_hex(gia_tri, nhan) {
   const gia_tri_chuan = gia_tri.replace(/\s+/g, "").toUpperCase();
   if (!/^[0-9A-F]{16}$/.test(gia_tri_chuan)) {
-    throw new Error(`${label} DES phải gồm đúng 16 ký tự hexadecimal (64 bit).`);
+    throw new Error(`${nhan} DES phải gồm đúng 16 ký tự hexadecimal (64 bit).`);
   }
   return gia_tri_chuan;
 }
@@ -115,10 +115,10 @@ window.thuat_toan_des = {
     const { chuoi_sang_byte_utf8, byte_sang_hex, kiem_tra_khoa_chu } = window.tien_ich_ma_hoa;
     const sang_hex = (gia_tri, nhan) => {
       const van_ban = kiem_tra_khoa_chu(gia_tri, nhan);
-      const bytes = chuoi_sang_byte_utf8(van_ban);
-      if (bytes.length > 8) throw new Error(`${label} DES tối đa 8 byte UTF-8.`);
-      const block = new Uint8Array(8); block.set(bytes);
-      return byte_sang_hex(block);
+      const cac_byte = chuoi_sang_byte_utf8(van_ban);
+      if (cac_byte.length > 8) throw new Error(`${nhan} DES tối đa 8 byte UTF-8.`);
+      const khoi = new Uint8Array(8); khoi.set(cac_byte);
+      return byte_sang_hex(khoi);
     };
     return xu_ly_khoi_des(sang_hex(ban_ro, "Bản rõ"), sang_hex(chuoi_khoa, "Khóa"), false);
   },
@@ -131,8 +131,8 @@ window.thuat_toan_des = {
     const chuoi_sach = ban_ma.replace(/\s+/g, "").toUpperCase();
     if (!/^[0-9A-F]{16}$/.test(chuoi_sach)) throw new Error("Bản mã DES phải gồm đúng 16 ký tự hex.");
     const ban_ro_hex = xu_ly_khoi_des(chuoi_sach, byte_sang_hex(khoi_khoa), true);
-    const bytes = hex_sang_byte(ban_ro_hex);
-    let ket_thuc = bytes.length; while(ket_thuc>0 && bytes[ket_thuc-1]===0) ket_thuc--;
-    return new TextDecoder().decode(bytes.slice(0,ket_thuc));
+    const cac_byte = hex_sang_byte(ban_ro_hex);
+    let ket_thuc = cac_byte.length; while (ket_thuc > 0 && cac_byte[ket_thuc - 1] === 0) ket_thuc--;
+    return new TextDecoder().decode(cac_byte.slice(0, ket_thuc));
   }
 };
