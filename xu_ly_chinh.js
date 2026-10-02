@@ -110,11 +110,15 @@ function chi_so_khoa(gia_tri) {
   return ket_qua;
 }
 
+function cau_tro_li(su_kien, bien = {}, mac_dinh = "") {
+  return window.tro_li_ma_hoa?.resolve(su_kien, bien) || mac_dinh;
+}
+
 function xu_ly_van_ban(che_do) {
   const dang_giai_ma = che_do === "decrypt";
   const nguon = dang_giai_ma ? ban_ma.value : ban_ro.value;
   if (!nguon.length) {
-    dat_thong_bao(dang_giai_ma ? "Nhập bản mã trước khi giải mã." : "Nhập bản rõ trước khi mã hóa.", "error");
+    dat_thong_bao(dang_giai_ma ? cau_tro_li("missingCipher", {}, "Nhập bản mã trước khi giải mã.") : cau_tro_li("missingPlain", {}, "Nhập bản rõ trước khi mã hóa."), "error");
     return;
   }
 
@@ -134,9 +138,9 @@ function xu_ly_van_ban(che_do) {
     else ban_ma.value = ket_qua;
 
     cap_nhat_bo_dem();
-    dat_thong_bao(dang_giai_ma ? "Giải mã thành công." : "Mã hóa thành công.", "success");
+    dat_thong_bao(dang_giai_ma ? cau_tro_li("decryptSuccess", {}, "Giải mã thành công.") : cau_tro_li("encryptSuccess", {}, "Mã hóa thành công."), "success");
   } catch (loi) {
-    dat_thong_bao(loi.message || "Có lỗi khi xử lý dữ liệu.", "error");
+    dat_thong_bao(cau_tro_li("error", { error: loi.message || "Có lỗi khi xử lý dữ liệu." }, loi.message || "Có lỗi khi xử lý dữ liệu."), "error");
   }
 }
 
@@ -190,7 +194,7 @@ function lam_moi_giao_dien() {
   hien_thi_o_nhap_khoa();
   hien_thi_bang_chu_cai();
   cap_nhat_tieu_de();
-  dat_thong_bao(la_des ? "DES xử lý đúng 1 khối 64 bit ở dạng hexadecimal." : "Sẵn sàng xử lý dữ liệu.");
+  dat_thong_bao(la_des ? "DES xử lý đúng 1 khối 64 bit ở dạng hexadecimal." : cau_tro_li("ready", {}, "Sẵn sàng xử lý dữ liệu."));
 }
 
 document.getElementById("encryptButton").addEventListener("click", () => xu_ly_van_ban("encrypt"));
@@ -199,14 +203,14 @@ document.getElementById("clearButton").addEventListener("click", () => {
   ban_ro.value = "";
   ban_ma.value = "";
   cap_nhat_bo_dem();
-  dat_thong_bao("Đã xóa nội dung.");
+  dat_thong_bao(cau_tro_li("clear", {}, "Đã xóa nội dung."));
 });
 document.getElementById("swapButton").addEventListener("click", () => {
   const hien_tai = ban_ro.value;
   ban_ro.value = ban_ma.value;
   ban_ma.value = hien_tai;
   cap_nhat_bo_dem();
-  dat_thong_bao("Đã đổi vị trí bản rõ và bản mã.");
+  dat_thong_bao(cau_tro_li("swap", {}, "Đã đổi vị trí bản rõ và bản mã."));
 });
 
 chon_thuat_toan.addEventListener("change", lam_moi_giao_dien);
