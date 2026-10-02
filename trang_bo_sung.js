@@ -219,6 +219,8 @@
   const mat_khau = document.getElementById("md5PasswordInput");
   const nut_kiem_tra_md5 = document.getElementById("md5CheckButton");
   const ket_qua_md5 = document.getElementById("md5CheckResult");
+  const tro_li = (su_kien, bien = {}, mac_dinh = "") =>
+    window.tro_li_ma_hoa?.resolve(su_kien, bien) || mac_dinh;
 
   function dat_ket_qua_md5(noi_dung, loai) {
     ket_qua_md5.className = loai ? "compare-result " + loai : "compare-result";
@@ -230,7 +232,7 @@
     const gia_tri_mat_khau = mat_khau.value;
 
     if (!/^[0-9a-f]{32}$/.test(hash_muc_tieu)) {
-      dat_ket_qua_md5("MD5 cần đối chiếu phải có đúng 32 ký tự hexadecimal.", "error");
+      dat_ket_qua_md5(tro_li("md5Invalid", {}, "MD5 cần đối chiếu phải có đúng 32 ký tự hexadecimal."), "error");
       return;
     }
 
@@ -238,7 +240,9 @@
     const trung_khop = hash_tinh_duoc === hash_muc_tieu;
 
     dat_ket_qua_md5(
-      "<strong>" + (trung_khop ? "✓ TRÙNG KHỚP" : "✕ KHÔNG TRÙNG KHỚP") + "</strong>" +
+      "<strong>" + (trung_khop
+        ? tro_li("md5Match", {}, "✓ TRÙNG KHỚP")
+        : tro_li("md5Mismatch", {}, "✕ KHÔNG TRÙNG KHỚP")) + "</strong>" +
       "<span class='hash-line'>MD5(password) = " + hash_tinh_duoc + "</span>",
       trung_khop ? "success" : "error"
     );
@@ -249,8 +253,8 @@
   });
 
   const trang_thai_file = {
-    A: { file: null, hash: "" },
-    B: { file: null, hash: "" }
+    A: { file: null, hash: "", error: false },
+    B: { file: null, hash: "", error: false }
   };
 
   function thoat_html(van_ban) {
@@ -280,17 +284,26 @@
     const a = trang_thai_file.A;
     const b = trang_thai_file.B;
 
+    if (a.error || b.error) {
+      ket_qua.className = "file-final-result different";
+      ket_qua.innerHTML = tro_li("fileReadError", {}, "Không thể đọc file. Hãy chọn lại.") +
+        "<br><small>SHA-256 chưa thể được tính cho file lỗi.</small>";
+      return;
+    }
+
     if (!a.hash || !b.hash) {
       ket_qua.className = "file-final-result";
-      ket_qua.textContent = "Chọn đủ hai file để bắt đầu đối chiếu.";
+      ket_qua.textContent = tro_li("fileNeedTwo", {}, "Chọn đủ hai file để bắt đầu đối chiếu.");
       return;
     }
 
     const giong_nhau = a.hash === b.hash;
     ket_qua.className = "file-final-result " + (giong_nhau ? "same" : "different");
     ket_qua.innerHTML = giong_nhau
-      ? "✓ HAI FILE GIỐNG NHAU<br><small>SHA-256 fingerprint trùng khớp hoàn toàn</small>"
-      : "✕ HAI FILE KHÁC NHAU<br><small>SHA-256 fingerprint không trùng khớp</small>";
+      ? tro_li("fileSame", {}, "Hai file có SHA-256 trùng khớp hoàn toàn.") +
+        "<br><small>SHA-256 fingerprint trùng khớp hoàn toàn</small>"
+      : tro_li("fileDifferent", {}, "Hai file có SHA-256 khác nhau.") +
+        "<br><small>SHA-256 fingerprint không trùng khớp</small>";
   }
 
   async function xu_ly_file(file, ben) {
@@ -298,7 +311,7 @@
 
     const meta = document.getElementById("fileMeta" + ben);
     const ten_file = thoat_html(file.name);
-    trang_thai_file[ben] = { file: file, hash: "" };
+    trang_thai_file[ben] = { file: file, hash: "", error: false };
 
     meta.innerHTML = [
       "<b title='", ten_file, "'>", ten_file, "</b>",
@@ -318,6 +331,7 @@
       cap_nhat_ket_qua_file();
     } catch (loi) {
       trang_thai_file[ben].hash = "";
+      trang_thai_file[ben].error = true;
       meta.innerHTML = [
         "<b>", ten_file, "</b>",
         "<span>Không thể đọc file</span>",
