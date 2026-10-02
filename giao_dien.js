@@ -31,6 +31,14 @@ function lay_cac_lua_chon_giao_dien() {
 }
 
 function ap_dung_giao_dien(giao_dien) {
+  const giao_dien_hien_tai = document.body.getAttribute("data-theme") || "phenikaa";
+  if (giao_dien === "tienmon" && giao_dien_hien_tai !== "tienmon") {
+    localStorage.setItem("cipher-last-normal-theme", giao_dien_hien_tai);
+  }
+  if (giao_dien !== "tienmon") {
+    localStorage.setItem("cipher-last-normal-theme", giao_dien);
+  }
+
   document.body.setAttribute("data-theme", giao_dien);
   localStorage.setItem("cipher-theme", giao_dien);
 
@@ -79,3 +87,9 @@ const giao_dien_cho_phep = [
 ap_dung_giao_dien(
   giao_dien_cho_phep.includes(giao_dien_da_luu) ? giao_dien_da_luu : "phenikaa"
 );
+
+window.giao_dien_ma_hoa = {
+  apDung: ap_dung_giao_dien,
+  layHienTai: () => document.body.getAttribute("data-theme") || "phenikaa",
+  thoatTienMon: () => ap_dung_giao_dien(localStorage.getItem("cipher-last-normal-theme") || "phenikaa")
+};
