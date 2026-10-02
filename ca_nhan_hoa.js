@@ -123,6 +123,13 @@
     if (!PACK[pack]) return;
     localStorage.setItem(KHOA_LUU, pack);
     cap_nhat_ui();
+
+    const thong_bao = document.getElementById("message");
+    if (thong_bao) {
+      thong_bao.textContent = resolve("ready");
+      thong_bao.className = "message";
+    }
+
     document.dispatchEvent(new CustomEvent("cipher:personality-change", { detail: { pack } }));
   }
 
