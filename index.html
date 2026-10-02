@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="font_minecraft.css?v=3">
   <link rel="stylesheet" href="trang_bo_sung.css?v=5">
   <link rel="stylesheet" href="ca_nhan_hoa.css?v=7">
-  <link rel="stylesheet" href="tien_mon_premium.css?v=7">
+  <link rel="stylesheet" href="tien_mon_premium.css?v=8">
 </head>
 <body data-theme="phenikaa">
   <div class="app-shell">
@@ -291,14 +291,88 @@
           <span class="theme-check">✓</span>
         </button>
 
-        <button class="theme-option" type="button" data-theme-option="tienmon">
-          <span class="theme-preview theme-preview-tienmon"></span>
-          <span class="theme-copy">
-            <strong>Tiên Môn Premium</strong>
-            <small>8 cảnh thời gian · Liquid Glass · FzCoTrang</small>
+      </div>
+
+      <section class="premium-entry-block">
+        <div class="premium-entry-copy">
+          <span class="settings-kicker">PREMIUM THEME</span>
+          <h3>Tiên Môn Premium</h3>
+          <p>Một hệ giao diện riêng với 8 tiên cảnh, Liquid Glass, FzCoTrang và ngôn ngữ cổ giới.</p>
+        </div>
+        <button class="premium-entry-button" id="tienMonPremiumOpen" type="button">
+          <span class="premium-entry-preview theme-preview-tienmon"></span>
+          <span>
+            <strong>Mở Tiên Môn</strong>
+            <small>Thiết lập riêng</small>
           </span>
-          <span class="theme-check">✓</span>
+          <b>→</b>
         </button>
+      </section>
+    </section>
+  </div>
+
+  <div class="tienmon-overlay" id="tienMonOverlay" aria-hidden="true">
+    <section class="tienmon-panel" role="dialog" aria-modal="true" aria-labelledby="tienMonPanelTitle">
+      <div class="tienmon-panel-head">
+        <div>
+          <span class="tienmon-kicker">TIÊN MÔN PREMIUM</span>
+          <h2 id="tienMonPanelTitle">Thiên Cảnh Mật Các</h2>
+          <p>Chọn tiên cảnh, vận cổ phong và để toàn bộ Mật Pháp Các nhập vào một thế giới riêng.</p>
+        </div>
+        <button class="tienmon-panel-close" id="tienMonPanelClose" type="button" aria-label="Đóng">×</button>
+      </div>
+
+      <div class="tienmon-panel-hero">
+        <span class="tienmon-panel-orb">仙</span>
+        <div>
+          <small>TRẠNG THÁI ĐẠO CẢNH</small>
+          <strong id="tienMonPanelState">Chưa nhập Tiên Môn</strong>
+          <p id="tienMonSceneState">Thiên cảnh sẽ tự chuyển theo thời gian thực.</p>
+        </div>
+      </div>
+
+      <div class="tienmon-scene-section">
+        <div class="tienmon-section-title">
+          <div>
+            <small>THIÊN CẢNH</small>
+            <strong>Ép cảnh để kiểm thử</strong>
+          </div>
+          <span>Auto theo giờ máy</span>
+        </div>
+        <div class="tienmon-scene-controls" id="tienMonSceneControls">
+          <button type="button" data-tm-scene="auto">Auto</button>
+          <button type="button" data-tm-scene="1">1</button>
+          <button type="button" data-tm-scene="2">2</button>
+          <button type="button" data-tm-scene="3">3</button>
+          <button type="button" data-tm-scene="4">4</button>
+          <button type="button" data-tm-scene="5">5</button>
+          <button type="button" data-tm-scene="6">6</button>
+          <button type="button" data-tm-scene="7">7</button>
+          <button type="button" data-tm-scene="8">8</button>
+        </div>
+      </div>
+
+      <div class="tienmon-contract-grid">
+        <article>
+          <small>PHONG CHỮ</small>
+          <strong>FzCoTrang</strong>
+          <p>Toàn bộ UI dùng cổ tự; glyph lỗi tự rơi về font Unicode an toàn.</p>
+        </article>
+        <article>
+          <small>VĂN PHONG</small>
+          <strong>Cổ giới</strong>
+          <p>Nút, nhãn, tiêu đề, trang tra cứu và mô tả giao diện đều đổi cách gọi theo vibe Tiên Môn.</p>
+        </article>
+        <article>
+          <small>HIỂN THỊ</small>
+          <strong>Tương phản động</strong>
+          <p>Màu chữ và glass đổi theo độ sáng từng tiên cảnh để không chìm vào tranh.</p>
+        </article>
+      </div>
+
+      <div class="tienmon-panel-actions">
+        <button id="tienMonActivate" class="tienmon-main-action" type="button">Nhập Tiên Môn</button>
+        <button id="tienMonLeave" class="tienmon-secondary-action" type="button">Trở về phàm giới</button>
       </div>
     </section>
   </div>
@@ -320,8 +394,9 @@
   <script src="xu_ly_chinh.js?v=7"></script>
   <script src="dieu_phoi_ma_hoa.js?v=7"></script>
   <script src="giao_dien.js?v=7"></script>
-  <script src="tien_mon_premium.js?v=7"></script>
+  <script src="tien_mon_premium.js?v=8"></script>
   <script src="trang_bo_sung.js?v=7"></script>
   <script src="kien_thuc_ma_hoa.js?v=7"></script>
+  <script src="tien_mon_ngon_ngu.js?v=8"></script>
 </body>
 </html>
