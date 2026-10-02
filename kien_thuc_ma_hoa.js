@@ -966,6 +966,14 @@
   function nang_cap_so_sanh() {
     const trang = document.querySelector(".app-view[data-view='compare']");
     if (!trang) return;
+
+    const mo_ta_trang = trang.querySelector(".extra-heading p:not(.eyebrow)");
+    const chip = trang.querySelector(".extra-heading .heading-chip");
+    if (mo_ta_trang) {
+      mo_ta_trang.textContent = "Ba công cụ: tạo và đếm hash MD5/SHA-256 từ văn bản, kiểm tra mật khẩu với MD5 có sẵn và đối chiếu hai file bằng fingerprint SHA-256.";
+    }
+    if (chip) chip.textContent = "3 công cụ";
+
     const hero = trang.querySelector(".compare-hero");
     if (!hero) return;
 
