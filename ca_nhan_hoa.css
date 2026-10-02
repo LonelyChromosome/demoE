@@ -41,7 +41,7 @@
   padding: 9px 10px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--white);
+  background: color-mix(in srgb, var(--page-bg-soft) 92%, transparent);
   color: var(--text);
   text-align: left;
   transition: transform .16s ease, border-color .16s ease, background .16s ease;
@@ -54,7 +54,7 @@
 
 .assistant-option.active {
   border-color: var(--primary-600);
-  background: var(--primary-050);
+  background: color-mix(in srgb, var(--primary-050) 88%, transparent);
   box-shadow: 0 0 0 2px var(--focus-ring);
 }
 
