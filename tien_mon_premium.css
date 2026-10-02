@@ -317,3 +317,385 @@ body[data-theme="tienmon"] .brand-logo-image {
   .tm-world-image { transition-duration: .01ms; }
   .tm-world-ambient { animation: none; }
 }
+ 
+
+/* ===== Panel rieng cho Tien Mon Premium ===== */
+
+.premium-entry-block {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.premium-entry-copy h3 {
+  margin: 4px 0 6px;
+  color: var(--primary-900);
+  font-size: 18px;
+}
+
+.premium-entry-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.premium-entry-button {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 74px;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, #d8b56b 44%, var(--border));
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, #173f3a 12%, var(--white)), color-mix(in srgb, #d8b56b 10%, var(--white)));
+  color: var(--text);
+  text-align: left;
+  box-shadow: 0 10px 26px rgba(12, 35, 32, .12);
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.premium-entry-button:hover {
+  transform: translateY(-1px);
+  border-color: #d8b56b;
+  box-shadow: 0 14px 30px rgba(12, 35, 32, .18);
+}
+
+.premium-entry-preview {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 6px 16px rgba(8,28,26,.18);
+}
+
+.premium-entry-button > span:nth-child(2) {
+  display: grid;
+  gap: 4px;
+}
+
+.premium-entry-button strong {
+  color: var(--primary-900);
+  font-size: 14px;
+}
+
+.premium-entry-button small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.premium-entry-button b {
+  color: #a88343;
+  font-size: 22px;
+}
+
+.tienmon-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 160;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(3, 15, 14, .58);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity .22s ease, visibility .22s ease;
+}
+
+.tienmon-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tienmon-panel {
+  width: min(760px, 100%);
+  max-height: min(90vh, 860px);
+  overflow-y: auto;
+  padding: 24px;
+  border: 1px solid rgba(235, 219, 167, .44);
+  border-radius: 22px;
+  background:
+    linear-gradient(150deg, rgba(20, 54, 50, .94), rgba(9, 29, 28, .97));
+  color: #eef7f3;
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  transform: translateY(18px) scale(.98);
+  transition: transform .24s ease;
+}
+
+.tienmon-overlay.open .tienmon-panel {
+  transform: translateY(0) scale(1);
+}
+
+.tienmon-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.tienmon-kicker {
+  color: #d8b56b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.tienmon-panel-head h2 {
+  margin: 6px 0 8px;
+  font-family: "FzCoTrang", Georgia, serif;
+  color: #f5fbf8;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 600;
+}
+
+.tienmon-panel-head p {
+  max-width: 590px;
+  margin: 0;
+  color: rgba(239,248,244,.72);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.tienmon-panel-close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: #f5fbf8;
+  font-size: 24px;
+}
+
+.tienmon-panel-hero {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(216,181,107,.34);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 0 0, rgba(216,181,107,.14), transparent 42%),
+    rgba(255,255,255,.06);
+}
+
+.tienmon-panel-orb {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(235,219,167,.48);
+  border-radius: 50%;
+  background: rgba(216,181,107,.12);
+  color: #e9d79f;
+  font-family: "FzCoTrang", Georgia, serif;
+  font-size: 28px;
+  box-shadow: inset 0 0 20px rgba(216,181,107,.08);
+}
+
+.tienmon-panel-hero small,
+.tienmon-section-title small,
+.tienmon-contract-grid small {
+  color: #d8b56b;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+}
+
+.tienmon-panel-hero strong {
+  display: block;
+  margin: 5px 0 3px;
+  font-family: "FzCoTrang", Georgia, serif;
+  color: #f5fbf8;
+  font-size: 17px;
+}
+
+.tienmon-panel-hero p {
+  margin: 0;
+  color: rgba(239,248,244,.7);
+  font-size: 11px;
+}
+
+.tienmon-scene-section {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  background: rgba(255,255,255,.045);
+}
+
+.tienmon-section-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.tienmon-section-title strong {
+  display: block;
+  margin-top: 4px;
+  color: #f1f8f5;
+  font-size: 13px;
+}
+
+.tienmon-section-title > span {
+  color: rgba(239,248,244,.56);
+  font-size: 10px;
+}
+
+.tienmon-scene-controls {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.tienmon-scene-controls button {
+  min-height: 38px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 10px;
+  background: rgba(255,255,255,.055);
+  color: rgba(244,251,248,.8);
+  font-size: 11px;
+  font-weight: 800;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.tienmon-scene-controls button:hover {
+  border-color: rgba(216,181,107,.54);
+  color: #fff;
+}
+
+.tienmon-scene-controls button.active {
+  border-color: #d8b56b;
+  background: rgba(216,181,107,.18);
+  color: #f5e8bc;
+  box-shadow: 0 0 0 2px rgba(216,181,107,.08);
+}
+
+.tienmon-contract-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tienmon-contract-grid article {
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 14px;
+  background: rgba(255,255,255,.045);
+}
+
+.tienmon-contract-grid strong {
+  display: block;
+  margin: 6px 0;
+  font-family: "FzCoTrang", Georgia, serif;
+  color: #f4faf7;
+  font-size: 14px;
+}
+
+.tienmon-contract-grid p {
+  margin: 0;
+  color: rgba(239,248,244,.64);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.tienmon-panel-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.tienmon-main-action,
+.tienmon-secondary-action {
+  min-height: 46px;
+  border-radius: 12px;
+  font-weight: 800;
+  transition: filter .15s ease, opacity .15s ease;
+}
+
+.tienmon-main-action {
+  border: 1px solid rgba(255,238,185,.54);
+  background: linear-gradient(135deg, #caa761, #8e713a);
+  color: #fffaf0;
+}
+
+.tienmon-secondary-action {
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.07);
+  color: #eef7f3;
+}
+
+.tienmon-main-action:hover,
+.tienmon-secondary-action:hover {
+  filter: brightness(1.08);
+}
+
+.tienmon-main-action:disabled,
+.tienmon-secondary-action:disabled {
+  opacity: .38;
+  cursor: default;
+  filter: none;
+}
+
+body.tienmon-panel-open {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .tienmon-panel {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .tienmon-contract-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tienmon-scene-controls {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tienmon-overlay {
+    padding: 10px;
+  }
+
+  .tienmon-panel-head {
+    gap: 10px;
+  }
+
+  .tienmon-panel-hero {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .tienmon-panel-orb {
+    width: 46px;
+    height: 46px;
+    font-size: 22px;
+  }
+
+  .tienmon-panel-actions {
+    grid-template-columns: 1fr;
+  }
+}
