@@ -1,0 +1,522 @@
+.app-view[hidden] {
+  display: none !important;
+}
+
+.app-view {
+  animation: hien_trang 0.18s ease;
+}
+
+@keyframes hien_trang {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.extra-heading {
+  margin-bottom: 20px;
+}
+
+.extra-heading p {
+  max-width: 760px;
+  margin: 9px 0 0;
+  color: inherit;
+  opacity: 0.72;
+  line-height: 1.65;
+}
+
+.crypto-group {
+  margin-top: 22px;
+}
+
+.crypto-group:first-of-type {
+  margin-top: 0;
+}
+
+.crypto-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  color: var(--primary-900);
+  font-size: 17px;
+}
+
+.crypto-group-title span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 31px;
+  height: 31px;
+  padding: 0 9px;
+  border-radius: 9px;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.crypto-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.crypto-info-card,
+.alphabet-full-card,
+.compare-card,
+.compare-hero {
+  border: 1px solid color-mix(in srgb, var(--primary-600) 17%, transparent);
+  background: color-mix(in srgb, var(--page-bg-soft) 91%, white 9%);
+  box-shadow: var(--shadow-soft);
+}
+
+.crypto-info-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  padding: 18px;
+  border-radius: 15px;
+}
+
+.crypto-info-card::after {
+  content: "";
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--primary-600) 9%, transparent);
+}
+
+.crypto-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.crypto-card-top h3 {
+  margin: 0;
+  color: var(--primary-900);
+  font-size: 18px;
+}
+
+.crypto-card-top code {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  font-size: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.crypto-info-card p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: inherit;
+  opacity: 0.76;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.crypto-facts {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.crypto-fact {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px;
+  padding-top: 7px;
+  border-top: 1px dashed color-mix(in srgb, var(--primary-600) 16%, transparent);
+  font-size: 12px;
+}
+
+.crypto-fact strong {
+  color: var(--primary-800);
+}
+
+.crypto-fact span {
+  color: inherit;
+  opacity: 0.82;
+}
+
+.alphabet-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.alphabet-full-card {
+  padding: 20px;
+  border-radius: 17px;
+}
+
+.alphabet-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.alphabet-card-head h2 {
+  margin: 0 0 5px;
+  color: var(--primary-900);
+  font-size: 21px;
+}
+
+.alphabet-card-head p {
+  margin: 0;
+  color: inherit;
+  opacity: 0.7;
+  font-size: 13px;
+}
+
+.alphabet-count {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.alphabet-full-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+  gap: 8px;
+}
+
+.alphabet-cell {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 4px;
+  min-height: 82px;
+  padding: 10px 8px;
+  border: 1px solid color-mix(in srgb, var(--primary-600) 18%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--primary-050) 82%, transparent);
+  text-align: center;
+}
+
+.alphabet-cell strong {
+  color: var(--primary-900);
+  font-size: 21px;
+  line-height: 1;
+}
+
+.alphabet-cell span {
+  color: inherit;
+  opacity: 0.7;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.alphabet-cell code {
+  color: var(--primary-700);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.compare-layout {
+  display: grid;
+  gap: 18px;
+}
+
+.compare-hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  padding: 20px;
+  border-radius: 17px;
+}
+
+.compare-hero h2 {
+  margin: 0 0 7px;
+  color: var(--primary-900);
+  font-size: 23px;
+}
+
+.compare-hero p {
+  margin: 0;
+  color: inherit;
+  opacity: 0.72;
+  line-height: 1.55;
+}
+
+.local-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--success) 13%, transparent);
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.5fr);
+  gap: 18px;
+}
+
+.compare-card {
+  padding: 20px;
+  border-radius: 17px;
+}
+
+.compare-card h3 {
+  margin: 0 0 6px;
+  color: var(--primary-900);
+  font-size: 18px;
+}
+
+.compare-card > p {
+  margin: 0 0 16px;
+  color: inherit;
+  opacity: 0.7;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.compare-fields {
+  display: grid;
+  gap: 12px;
+}
+
+.compare-field {
+  display: grid;
+  gap: 7px;
+}
+
+.compare-field > span {
+  color: var(--primary-900);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.compare-result {
+  margin-top: 14px;
+  padding: 12px 13px;
+  border: 1px solid color-mix(in srgb, var(--primary-600) 16%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--primary-050) 80%, transparent);
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.compare-result.success {
+  border-color: color-mix(in srgb, var(--success) 32%, transparent);
+  background: color-mix(in srgb, var(--success) 9%, transparent);
+  color: var(--success);
+}
+
+.compare-result.error {
+  border-color: color-mix(in srgb, var(--danger) 32%, transparent);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+  color: var(--danger);
+}
+
+.hash-line {
+  display: block;
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: inherit;
+}
+
+.file-compare-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 13px;
+  align-items: stretch;
+}
+
+.file-drop {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  padding: 17px;
+  border: 1.5px dashed color-mix(in srgb, var(--primary-600) 46%, transparent);
+  border-radius: 15px;
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--primary-600) 10%, transparent), transparent 62%),
+    color-mix(in srgb, var(--primary-050) 72%, transparent);
+  text-align: center;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+  cursor: pointer;
+}
+
+.file-drop:hover,
+.file-drop.dragging {
+  transform: translateY(-2px);
+  border-color: var(--primary-600);
+  background:
+    radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--primary-600) 18%, transparent), transparent 65%),
+    color-mix(in srgb, var(--primary-050) 88%, transparent);
+}
+
+.file-drop input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.file-drop-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 10px;
+  border-radius: 14px;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.file-drop strong {
+  display: block;
+  color: var(--primary-900);
+  font-size: 13px;
+}
+
+.file-drop small {
+  display: block;
+  margin-top: 5px;
+  color: inherit;
+  opacity: 0.65;
+  font-size: 11px;
+}
+
+.file-meta {
+  display: grid;
+  gap: 5px;
+  margin-top: 11px;
+  width: 100%;
+  min-width: 0;
+  font-size: 11px;
+}
+
+.file-meta b {
+  overflow: hidden;
+  color: var(--primary-800);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-meta code {
+  overflow-wrap: anywhere;
+  color: inherit;
+  opacity: 0.74;
+  font-size: 9px;
+}
+
+.file-vs {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--primary-600) 28%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--primary-100) 76%, transparent);
+  color: var(--primary-800);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.file-final-result {
+  display: grid;
+  place-items: center;
+  min-height: 66px;
+  margin-top: 14px;
+  padding: 13px 15px;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--primary-100) 66%, transparent);
+  color: var(--primary-800);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.file-final-result.same {
+  background: color-mix(in srgb, var(--success) 13%, transparent);
+  color: var(--success);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.file-final-result.different {
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  color: var(--danger);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--danger) 18%, transparent);
+}
+
+.compare-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+@media (max-width: 1080px) {
+  .crypto-info-grid,
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .crypto-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .local-badge {
+    justify-self: start;
+  }
+
+  .file-compare-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .file-vs {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .alphabet-full-card,
+  .compare-card,
+  .compare-hero,
+  .crypto-info-card {
+    padding: 15px;
+  }
+
+  .alphabet-full-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .crypto-fact {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
