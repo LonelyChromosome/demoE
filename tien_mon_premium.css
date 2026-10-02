@@ -111,6 +111,32 @@ body[data-theme="tienmon"][data-tm-tone="light"] {
   --muted: rgba(238,248,244,.72);
 }
 
+body[data-theme="tienmon"],
+body[data-theme="tienmon"] button,
+body[data-theme="tienmon"] input,
+body[data-theme="tienmon"] select,
+body[data-theme="tienmon"] textarea,
+body[data-theme="tienmon"] label,
+body[data-theme="tienmon"] span,
+body[data-theme="tienmon"] strong,
+body[data-theme="tienmon"] small,
+body[data-theme="tienmon"] p,
+body[data-theme="tienmon"] h1,
+body[data-theme="tienmon"] h2,
+body[data-theme="tienmon"] h3,
+body[data-theme="tienmon"] h4 {
+  font-family: "FzCoTrang", Georgia, serif;
+}
+
+body[data-theme="tienmon"] code,
+body[data-theme="tienmon"] pre,
+body[data-theme="tienmon"] .tm-safe-glyph,
+body[data-theme="tienmon"] .file-meta code,
+body[data-theme="tienmon"] .hash-line,
+body[data-theme="tienmon"] .hash-counter-results code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
 body[data-theme="tienmon"] .app-shell,
 body[data-theme="tienmon"] .page-area,
 body[data-theme="tienmon"] .content {
