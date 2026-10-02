@@ -13,6 +13,7 @@
 
   let dang_hien = 0;
   let canh_hien_tai = null;
+  let che_do_canh = localStorage.getItem("cipher-tienmon-scene-mode") || "auto";
 
   function phut_hien_tai() {
     const d = new Date();
@@ -117,9 +118,115 @@
     img.src = GOC + canh.file;
   }
 
+  function canh_theo_che_do() {
+    if (che_do_canh === "auto") return tim_canh();
+    const id = Number(che_do_canh);
+    return CANH.find(c => c.id === id) || tim_canh();
+  }
+
   function cap_nhat_theme() {
-    if (document.body.dataset.theme !== "tienmon") return;
-    chuyen_canh(tim_canh(), canh_hien_tai == null);
+    if (document.body.dataset.theme !== "tienmon") {
+      cap_nhat_panel();
+      return;
+    }
+    chuyen_canh(canh_theo_che_do(), canh_hien_tai == null);
+    cap_nhat_panel();
+  }
+
+  function cap_nhat_panel() {
+    const dang_bat = document.body.dataset.theme === "tienmon";
+    const state = document.getElementById("tienMonPanelState");
+    const sceneState = document.getElementById("tienMonSceneState");
+    const activate = document.getElementById("tienMonActivate");
+    const leave = document.getElementById("tienMonLeave");
+
+    if (state) state.textContent = dang_bat ? "Tiên Môn đang khai mở" : "Chưa nhập Tiên Môn";
+    if (sceneState) {
+      sceneState.textContent = che_do_canh === "auto"
+        ? "Thiên cảnh tự chuyển theo thời gian thực."
+        : "Đang ép Thiên Cảnh " + che_do_canh + " để kiểm thử.";
+    }
+    if (activate) {
+      activate.textContent = dang_bat ? "Tiên Môn đã khai mở" : "Nhập Tiên Môn";
+      activate.disabled = dang_bat;
+    }
+    if (leave) leave.disabled = !dang_bat;
+
+    document.querySelectorAll("[data-tm-scene]").forEach(nut => {
+      nut.classList.toggle("active", nut.dataset.tmScene === che_do_canh);
+    });
+  }
+
+  function mo_panel() {
+    const overlay = document.getElementById("tienMonOverlay");
+    const settings = document.getElementById("settingsOverlay");
+    if (!overlay) return;
+
+    settings?.classList.remove("open");
+    settings?.setAttribute("aria-hidden", "true");
+
+    overlay.classList.add("open");
+    overlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("tienmon-panel-open");
+    cap_nhat_panel();
+  }
+
+  function dong_panel() {
+    const overlay = document.getElementById("tienMonOverlay");
+    if (!overlay) return;
+    overlay.classList.remove("open");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("tienmon-panel-open");
+  }
+
+  function kich_hoat_tien_mon() {
+    window.giao_dien_ma_hoa?.apDung("tienmon");
+    document.dispatchEvent(new CustomEvent("tienmon:theme-change"));
+    cap_nhat_theme();
+    setTimeout(dong_panel, 180);
+  }
+
+  function thoat_tien_mon() {
+    window.giao_dien_ma_hoa?.thoatTienMon();
+    document.dispatchEvent(new CustomEvent("tienmon:theme-change"));
+    cap_nhat_panel();
+    setTimeout(dong_panel, 180);
+  }
+
+  function dat_canh(mode) {
+    const hop_le = mode === "auto" || CANH.some(c => String(c.id) === String(mode));
+    if (!hop_le) return;
+    che_do_canh = String(mode);
+    localStorage.setItem("cipher-tienmon-scene-mode", che_do_canh);
+    canh_hien_tai = null;
+
+    if (document.body.dataset.theme === "tienmon") {
+      chuyen_canh(canh_theo_che_do(), false);
+    }
+    cap_nhat_panel();
+  }
+
+  function gan_su_kien_panel() {
+    document.getElementById("tienMonPremiumOpen")?.addEventListener("click", mo_panel);
+    document.getElementById("tienMonPanelClose")?.addEventListener("click", dong_panel);
+    document.getElementById("tienMonActivate")?.addEventListener("click", kich_hoat_tien_mon);
+    document.getElementById("tienMonLeave")?.addEventListener("click", thoat_tien_mon);
+
+    document.getElementById("tienMonSceneControls")?.addEventListener("click", su_kien => {
+      const nut = su_kien.target.closest("[data-tm-scene]");
+      if (nut) dat_canh(nut.dataset.tmScene);
+    });
+
+    const overlay = document.getElementById("tienMonOverlay");
+    overlay?.addEventListener("click", su_kien => {
+      if (su_kien.target === overlay) dong_panel();
+    });
+
+    document.addEventListener("keydown", su_kien => {
+      if (su_kien.key === "Escape" && overlay?.classList.contains("open")) dong_panel();
+    });
+
+    cap_nhat_panel();
   }
 
   tao_the_gioi();
@@ -127,13 +234,22 @@
   const observer = new MutationObserver(cap_nhat_theme);
   observer.observe(document.body, { attributes: true, attributeFilter: ["data-theme"] });
 
+  gan_su_kien_panel();
   cap_nhat_theme();
+
   setInterval(() => {
-    if (document.body.dataset.theme === "tienmon") chuyen_canh(tim_canh());
+    if (document.body.dataset.theme === "tienmon" && che_do_canh === "auto") {
+      chuyen_canh(tim_canh());
+    }
   }, 30000);
 
   window.tien_mon_premium = {
     resolveScene: tim_canh,
-    refresh: cap_nhat_theme
+    refresh: cap_nhat_theme,
+    openPanel: mo_panel,
+    closePanel: dong_panel,
+    activate: kich_hoat_tien_mon,
+    leave: thoat_tien_mon,
+    setScene: dat_canh
   };
 })();
