@@ -234,6 +234,26 @@
     if (!thuat_toan_nang_cao.has(thuat_toan)) return;
 
     const dang_giai_ma = che_do === "decrypt";
+    const tro_li = (su_kien, bien = {}, mac_dinh = "") =>
+      window.tro_li_ma_hoa?.resolve(su_kien, bien) || mac_dinh;
+
+    if (thuat_toan_bam.has(thuat_toan) && !ban_ro.value) {
+      dat_thong_bao_nang_cao(tro_li("missingHash", {}, "Nhập dữ liệu trước khi băm."), "error");
+      return;
+    }
+
+    if (!thuat_toan_bam.has(thuat_toan)) {
+      const nguon = dang_giai_ma ? ban_ma.value : ban_ro.value;
+      if (!nguon) {
+        dat_thong_bao_nang_cao(
+          dang_giai_ma
+            ? tro_li("missingCipher", {}, "Nhập bản mã trước khi giải mã.")
+            : tro_li("missingPlain", {}, "Nhập bản rõ trước khi mã hóa."),
+          "error"
+        );
+        return;
+      }
+    }
 
     try {
       const khoa = lay_khoa_hien_tai();
@@ -277,12 +297,14 @@
       lam_moi_bit();
       dat_thong_bao_nang_cao(
         thuat_toan_bam.has(thuat_toan)
-          ? "Tạo giá trị băm thành công."
-          : (dang_giai_ma ? "Giải mã thành công." : "Mã hóa thành công."),
+          ? tro_li("hashSuccess", {}, "Tạo giá trị băm thành công.")
+          : (dang_giai_ma
+              ? tro_li("decryptSuccess", {}, "Giải mã thành công.")
+              : tro_li("encryptSuccess", {}, "Mã hóa thành công.")),
         "success"
       );
     } catch (loi) {
-      dat_thong_bao_nang_cao(loi.message || "Có lỗi khi xử lý dữ liệu.", "error");
+      dat_thong_bao_nang_cao(tro_li("error", { error: loi.message || "Có lỗi khi xử lý dữ liệu." }, loi.message || "Có lỗi khi xử lý dữ liệu."), "error");
     }
   }
 
