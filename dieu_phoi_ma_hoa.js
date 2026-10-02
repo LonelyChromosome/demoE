@@ -33,13 +33,15 @@
     public: [["rsa", "RSA"]],
     hash: [
       ["md5", "MD5"],
-      ["sha256", "SHA-256"]
+      ["sha1", "SHA-1"],
+      ["sha256", "SHA-256"],
+      ["sha512", "SHA-512"]
     ]
   };
 
   const ten_hien_thi = Object.fromEntries(Object.values(cac_thuat_toan).flat());
-  const thuat_toan_nang_cao = new Set(["des", "aes", "rsa", "md5", "sha256"]);
-  const thuat_toan_bam = new Set(["md5", "sha256"]);
+  const thuat_toan_nang_cao = new Set(["des", "aes", "rsa", "md5", "sha1", "sha256", "sha512"]);
+  const thuat_toan_bam = new Set(["md5", "sha1", "sha256", "sha512"]);
 
   const truong_nhom = document.createElement("label");
   truong_nhom.className = "field crypto-category-field";
@@ -78,7 +80,7 @@
 
   tieu_de_thanh_tren.textContent = "Công cụ mật mã";
   nhan_thanh_tren.textContent = "Z26 / Z29 / DES / AES / RSA / HASH";
-  if (nhan_so_luong_thuat_toan) nhan_so_luong_thuat_toan.textContent = "10 thuật toán";
+  if (nhan_so_luong_thuat_toan) nhan_so_luong_thuat_toan.textContent = "12 thuật toán";
   document.title = "Công Cụ Mật Mã - Z26 / Z29 / DES / AES / RSA";
 
   const nhom_tieng_viet = {
@@ -260,9 +262,15 @@
       } else if (thuat_toan === "md5") {
         if (!ban_ro.value) throw new Error("Nhập dữ liệu trước khi băm.");
         ban_ma.value = window.thuat_toan_md5.bam(ban_ro.value);
+      } else if (thuat_toan === "sha1") {
+        if (!ban_ro.value) throw new Error("Nhập dữ liệu trước khi băm.");
+        ban_ma.value = await window.thuat_toan_sha_1.bam(ban_ro.value);
       } else if (thuat_toan === "sha256") {
         if (!ban_ro.value) throw new Error("Nhập dữ liệu trước khi băm.");
         ban_ma.value = await window.thuat_toan_sha_256.bam(ban_ro.value);
+      } else if (thuat_toan === "sha512") {
+        if (!ban_ro.value) throw new Error("Nhập dữ liệu trước khi băm.");
+        ban_ma.value = await window.thuat_toan_sha_512.bam(ban_ro.value);
       }
 
       dem_lai_ky_tu();
