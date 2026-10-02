@@ -1,0 +1,319 @@
+@font-face {
+  font-family: "FzCoTrang";
+  src: url("https://raw.githubusercontent.com/LonelyChromosome/DemoF3/13749a45b6adef3cfaed3978663668cda0323911/assets/tien_mon_premium/fonts/FzCoTrang.ttf") format("truetype");
+  font-display: swap;
+}
+
+.tm-world {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  background:
+    radial-gradient(circle at 15% 18%, rgba(214, 237, 226, .42), transparent 34%),
+    radial-gradient(circle at 86% 76%, rgba(31, 79, 74, .46), transparent 38%),
+    linear-gradient(145deg, #d7e1d9, #8aa5a0 45%, #183b3a);
+  transition: opacity .35s ease, visibility .35s ease;
+}
+
+body[data-theme="tienmon"] .tm-world {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tm-world-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0;
+  transform: scale(1.001);
+  transition: opacity 3s ease-in-out;
+  will-change: opacity;
+}
+
+.tm-world-image.active {
+  opacity: 1;
+}
+
+.tm-world-ambient {
+  position: absolute;
+  inset: -8%;
+  z-index: 2;
+  opacity: .24;
+  background:
+    radial-gradient(ellipse at 20% 26%, rgba(255,255,255,.38), transparent 31%),
+    radial-gradient(ellipse at 76% 72%, rgba(211,237,228,.22), transparent 38%);
+  filter: blur(18px);
+  animation: tm_tho 34s ease-in-out infinite alternate;
+}
+
+@keyframes tm_tho {
+  from { transform: translate3d(-1.4%, -.6%, 0) scale(1); opacity: .16; }
+  to { transform: translate3d(1.2%, .8%, 0) scale(1.025); opacity: .3; }
+}
+
+body[data-theme="tienmon"] {
+  --tm-safe-font: Inter, "Segoe UI", Arial, sans-serif;
+  --tm-jade: #63b9a3;
+  --tm-jade-deep: #174d46;
+  --tm-gold: #d8b56b;
+  --tm-silver: #e5ece9;
+  --tm-glass: rgba(239, 247, 243, .25);
+  --tm-glass-strong: rgba(235, 244, 240, .54);
+  --tm-border: rgba(255,255,255,.54);
+  --tm-shadow: 0 18px 46px rgba(9, 30, 29, .22);
+  --tm-text-main: #102a28;
+  --tm-text-soft: rgba(16,42,40,.76);
+
+  --primary-900: var(--tm-text-main);
+  --primary-800: #1f6258;
+  --primary-700: #2c7669;
+  --primary-600: #3a8f7d;
+  --primary-100: rgba(207,235,225,.48);
+  --primary-050: rgba(239,248,244,.28);
+  --accent: var(--tm-gold);
+  --accent-dark: #a88343;
+  --page-bg: transparent;
+  --page-bg-soft: rgba(239,247,243,.22);
+  --sidebar-bg: rgba(13,42,39,.67);
+  --sidebar-bg-end: rgba(8,31,30,.76);
+  --topbar-bg: rgba(244,249,247,.24);
+  --white: rgba(247,251,249,.38);
+  --border: rgba(255,255,255,.42);
+  --text: var(--tm-text-main);
+  --muted: var(--tm-text-soft);
+  --focus-ring: rgba(216,181,107,.24);
+  --shadow-soft: 0 10px 28px rgba(9,30,29,.14);
+}
+
+body[data-theme="tienmon"][data-tm-tone="light"] {
+  --tm-glass: rgba(12, 37, 36, .32);
+  --tm-glass-strong: rgba(11, 34, 34, .61);
+  --tm-border: rgba(232,247,241,.32);
+  --tm-text-main: #f5fbf8;
+  --tm-text-soft: rgba(238,248,244,.79);
+
+  --primary-900: #f5fbf8;
+  --primary-800: #d8eee7;
+  --primary-700: #b8ddd2;
+  --primary-600: #76c3ad;
+  --primary-100: rgba(103,170,151,.22);
+  --primary-050: rgba(20,58,54,.26);
+  --white: rgba(16,46,43,.42);
+  --border: rgba(232,247,241,.24);
+  --text: #f5fbf8;
+  --muted: rgba(238,248,244,.72);
+}
+
+body[data-theme="tienmon"] .app-shell,
+body[data-theme="tienmon"] .page-area,
+body[data-theme="tienmon"] .content {
+  background: transparent !important;
+}
+
+body[data-theme="tienmon"] .page-area {
+  isolation: isolate;
+}
+
+body[data-theme="tienmon"] .sidebar {
+  border-right: 1px solid rgba(238,248,244,.22);
+  background:
+    linear-gradient(180deg, var(--sidebar-bg), var(--sidebar-bg-end));
+  box-shadow: 12px 0 36px rgba(4,20,19,.16);
+  backdrop-filter: blur(22px) saturate(122%);
+  -webkit-backdrop-filter: blur(22px) saturate(122%);
+}
+
+body[data-theme="tienmon"] .topbar,
+body[data-theme="tienmon"] .control-card,
+body[data-theme="tienmon"] .workspace-card,
+body[data-theme="tienmon"] .mini-card,
+body[data-theme="tienmon"] .crypto-info-card,
+body[data-theme="tienmon"] .alphabet-full-card,
+body[data-theme="tienmon"] .compare-card,
+body[data-theme="tienmon"] .hash-counter-card,
+body[data-theme="tienmon"] .lesson-hero,
+body[data-theme="tienmon"] .lesson-section,
+body[data-theme="tienmon"] .lesson-summary-grid article {
+  border-color: var(--tm-border) !important;
+  background: var(--tm-glass) !important;
+  box-shadow: var(--tm-shadow) !important;
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+}
+
+body[data-theme="tienmon"] .topbar {
+  color: var(--tm-text-main);
+  border-bottom: 1px solid var(--tm-border);
+}
+
+body[data-theme="tienmon"] .topbar-search,
+body[data-theme="tienmon"] .topbar-badge,
+body[data-theme="tienmon"] .menu-button,
+body[data-theme="tienmon"] .alphabet-cell,
+body[data-theme="tienmon"] .file-drop,
+body[data-theme="tienmon"] .file-final-result,
+body[data-theme="tienmon"] .compare-result,
+body[data-theme="tienmon"] .search-suggestions {
+  border-color: var(--tm-border);
+  background: var(--tm-glass-strong);
+  color: var(--tm-text-main);
+  backdrop-filter: blur(20px) saturate(125%);
+  -webkit-backdrop-filter: blur(20px) saturate(125%);
+}
+
+body[data-theme="tienmon"] input,
+body[data-theme="tienmon"] textarea,
+body[data-theme="tienmon"] select {
+  border-color: rgba(255,255,255,.42);
+  background: color-mix(in srgb, var(--tm-glass-strong) 82%, transparent);
+  color: var(--tm-text-main);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.13);
+}
+
+body[data-theme="tienmon"] input::placeholder,
+body[data-theme="tienmon"] textarea::placeholder {
+  color: var(--tm-text-soft);
+}
+
+body[data-theme="tienmon"] .page-heading h1,
+body[data-theme="tienmon"] .lesson-hero h1,
+body[data-theme="tienmon"] .crypto-card-top h3,
+body[data-theme="tienmon"] .alphabet-card-head h2,
+body[data-theme="tienmon"] .compare-card h3,
+body[data-theme="tienmon"] .hash-counter-head h2,
+body[data-theme="tienmon"] .lesson-section h2,
+body[data-theme="tienmon"] .topbar-title,
+body[data-theme="tienmon"] .field > span,
+body[data-theme="tienmon"] .mini-card-title strong,
+body[data-theme="tienmon"] .algorithm-current > span,
+body[data-theme="tienmon"] .settings-header h2,
+body[data-theme="tienmon"] .settings-subhead h3,
+body[data-theme="tienmon"] .nav-item > span:last-child {
+  font-family: "FzCoTrang", Georgia, serif;
+  letter-spacing: .02em;
+}
+
+body[data-theme="tienmon"] .page-heading h1,
+body[data-theme="tienmon"] .lesson-hero h1,
+body[data-theme="tienmon"] .topbar-title {
+  text-shadow:
+    0 1px 0 rgba(255,255,255,.26),
+    0 2px 12px color-mix(in srgb, #000 24%, transparent);
+}
+
+body[data-theme="tienmon"] .message,
+body[data-theme="tienmon"] .compare-result,
+body[data-theme="tienmon"] .file-final-result,
+body[data-theme="tienmon"] .file-meta,
+body[data-theme="tienmon"] code,
+body[data-theme="tienmon"] .eyebrow,
+body[data-theme="tienmon"] .breadcrumb,
+body[data-theme="tienmon"] p,
+body[data-theme="tienmon"] small,
+body[data-theme="tienmon"] .assistant-avatar,
+body[data-theme="tienmon"] .assistant-check,
+body[data-theme="tienmon"] .nav-icon {
+  font-family: var(--tm-safe-font);
+}
+
+body[data-theme="tienmon"] .action-button.primary {
+  border: 1px solid rgba(255,241,192,.52);
+  background:
+    linear-gradient(135deg, rgba(204,170,95,.94), rgba(112,91,50,.92));
+  color: #fffaf0;
+  box-shadow: 0 8px 22px rgba(68,48,18,.22), inset 0 1px 0 rgba(255,255,255,.34);
+}
+
+body[data-theme="tienmon"] .action-button.secondary,
+body[data-theme="tienmon"] .action-button.outline,
+body[data-theme="tienmon"] .action-button.ghost,
+body[data-theme="tienmon"] .detail-button {
+  border-color: var(--tm-border);
+  background: var(--tm-glass);
+  color: var(--tm-text-main);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+}
+
+body[data-theme="tienmon"] .heading-chip,
+body[data-theme="tienmon"] .crypto-card-top code,
+body[data-theme="tienmon"] .alphabet-count,
+body[data-theme="tienmon"] .lesson-tags span,
+body[data-theme="tienmon"] .hash-result-title span {
+  border: 1px solid rgba(225,193,125,.36);
+  background: rgba(216,181,107,.18);
+  color: var(--tm-text-main);
+}
+
+body[data-theme="tienmon"] .settings-overlay {
+  background: rgba(5,19,18,.34);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+body[data-theme="tienmon"] .settings-panel {
+  border-color: rgba(255,255,255,.34);
+  background: var(--tm-glass-strong);
+  color: var(--tm-text-main);
+  box-shadow: 0 26px 70px rgba(3,18,17,.34);
+  backdrop-filter: blur(28px) saturate(130%);
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+}
+
+body[data-theme="tienmon"] .theme-option,
+body[data-theme="tienmon"] .assistant-option {
+  border-color: rgba(255,255,255,.28);
+  background: rgba(255,255,255,.09);
+  color: var(--tm-text-main);
+}
+
+body[data-theme="tienmon"] .theme-option.active,
+body[data-theme="tienmon"] .assistant-option.active {
+  border-color: rgba(216,181,107,.76);
+  background: rgba(216,181,107,.14);
+  box-shadow: 0 0 0 2px rgba(216,181,107,.13);
+}
+
+.theme-preview-tienmon {
+  background:
+    linear-gradient(145deg, rgba(19,70,62,.18), rgba(222,201,150,.16)),
+    url("https://raw.githubusercontent.com/LonelyChromosome/DemoF3/13749a45b6adef3cfaed3978663668cda0323911/assets/tien_mon_premium/app_backgrounds/tienmon_3_1440x2560.png") center 42% / cover no-repeat;
+}
+
+body[data-theme="tienmon"] .message {
+  color: var(--tm-text-soft);
+  text-shadow: 0 1px 8px rgba(0,0,0,.16);
+}
+
+body[data-theme="tienmon"] .message.success {
+  color: color-mix(in srgb, #bff7d1 76%, var(--tm-text-main));
+}
+
+body[data-theme="tienmon"] .message.error {
+  color: color-mix(in srgb, #ffb8b8 78%, var(--tm-text-main));
+}
+
+body[data-theme="tienmon"] .side-footer,
+body[data-theme="tienmon"] .breadcrumb,
+body[data-theme="tienmon"] .panel-heading,
+body[data-theme="tienmon"] .alphabet-label,
+body[data-theme="tienmon"] .theme-copy small,
+body[data-theme="tienmon"] .assistant-copy small {
+  color: var(--tm-text-soft);
+}
+
+body[data-theme="tienmon"] .brand-logo-image {
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.2));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tm-world-image { transition-duration: .01ms; }
+  .tm-world-ambient { animation: none; }
+}
