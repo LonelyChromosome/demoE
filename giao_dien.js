@@ -73,7 +73,7 @@ document.addEventListener("click", su_kien => {
 const giao_dien_da_luu = localStorage.getItem("cipher-theme");
 const giao_dien_cho_phep = [
   "phenikaa","youtube","shopee","tiktok","ben10","steam",
-  "discord","valorant","lol","facebook","minecraft"
+  "discord","valorant","lol","facebook","minecraft","tienmon"
 ];
 
 ap_dung_giao_dien(
