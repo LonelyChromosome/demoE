@@ -863,15 +863,18 @@
 
   function mo_ket_qua(query) {
     const ket_qua = tim(query);
+    const query_an_toan = query.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+    const thong_bao_rong = window.tro_li_ma_hoa?.resolve("searchEmpty", { query }) || "Không tìm thấy thuật toán phù hợp với “" + query + "”.";
+    const thong_bao_rong_an_toan = thong_bao_rong.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
     const cards = ket_qua.length
       ? ket_qua.map(tao_the_ngan).join("")
-      : "<div class='empty-search'><strong>Không tìm thấy thuật toán phù hợp.</strong><span>Thử: AES, RSA, Caesar, SHA, MD5, Hill, Vigenere...</span></div>";
+      : "<div class='empty-search'><strong>" + thong_bao_rong_an_toan + "</strong><span>Thử: AES, RSA, Caesar, SHA, MD5, Hill, Vigenere...</span></div>";
 
     searchView.innerHTML = [
       "<section class='breadcrumb'><span>Trang chủ</span><b>›</b><strong>Kết quả tìm kiếm</strong></section>",
       "<section class='page-heading extra-heading'><div>",
       "<p class='eyebrow'>SEARCH RESULTS</p>",
-      "<h1>Kết quả cho “", query.replace(/</g, "&lt;").replace(/>/g, "&gt;"), "”</h1>",
+      "<h1>Kết quả cho “", query_an_toan, "”</h1>",
       "<p>", String(ket_qua.length), " thuật toán phù hợp. Đây là bản mô tả ngắn; bấm Chi tiết để mở bài giảng đầy đủ.</p>",
       "</div><div class='heading-chip'>", String(ket_qua.length), " kết quả</div></section>",
       "<div class='crypto-info-grid search-result-grid'>", cards, "</div>"
